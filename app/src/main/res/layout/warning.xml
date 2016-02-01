@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextClock
+        android:id="@+id/text_clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:textColor="#E0E0E0"
+        android:textSize="28.0sp" />
+
+    <TextView
+        android:id="@+id/dot_blink1"
+        android:layout_width="5dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="65dp"
+        android:background="#000000"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/dot_blink2"
+        android:layout_width="5dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="65dp"
+        android:background="#000000"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/top_diviner"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_clock"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/diviner" />
+
+    <ImageView
+        android:id="@+id/icon_warning"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/top_diviner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:src="@mipmap/ic_warning" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon_warning"
+        android:layout_centerHorizontal="true"
+        android:text="Please Check Engine\nTemperature"
+        android:textAlignment="center"
+        android:textColor="#E0E0E0"
+        android:textSize="28.0sp" />
+
+    <TextView
+        android:id="@+id/trip_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/message"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="127dp"
+        android:text="TRIP A"
+        android:textColor="#E0E0E0"
+        android:textSize="28.0sp" />
+
+    <TextView
+        android:id="@+id/odometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_toRightOf="@id/trip_a"
+        android:text="002558"
+        android:textColor="#E0E0E0"
+        android:textSize="36.0sp" />
+
+    <TextView
+        android:id="@+id/unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="135dp"
+        android:layout_toRightOf="@id/odometer"
+        android:text="miles"
+        android:textColor="#E0E0E0"
+        android:textSize="20.0sp" />
+
+</RelativeLayout>

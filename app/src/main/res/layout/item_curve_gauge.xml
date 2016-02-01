@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="{TITLE}"
+        android:textColor="#AAAAAA"
+        android:textSize="28.0sp" />
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:src="@mipmap/bg_globe" />
+
+    <ImageView
+        android:id="@+id/globe"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:src="@mipmap/globe" />
+
+    <!--com.android.mid.animations.GifView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:components="http://schemas.android.com/apk/res-auto"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        components:src="@mipmap/globe" /-->
+
+    <TextView
+        android:id="@+id/sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="80dp"
+        android:text="{SUBTITLE}"
+        android:textColor="#BBBBBB"
+        android:textSize="28.0sp" />
+
+    <com.android.mid.customizes.CurveGauge
+        android:id="@+id/curve_gauge"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp"
+        android:progress="0" />
+
+</RelativeLayout>
