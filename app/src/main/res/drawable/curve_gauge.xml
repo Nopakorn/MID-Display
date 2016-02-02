@@ -12,7 +12,6 @@
             android:pivotY="50%"
             android:fromDegrees="-180"
             android:toDegrees="-360"
-
             />
 
     </item>

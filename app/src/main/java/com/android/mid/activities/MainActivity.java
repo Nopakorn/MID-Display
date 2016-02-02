@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.android.mid.R;
 import com.android.mid.standard.Batt5;
+import com.android.mid.standard.Batt5New;
 import com.android.mid.standard.EcoBar;
 import com.android.mid.standard.Ending;
 import com.android.mid.standard.Fuel;
@@ -89,7 +90,7 @@ public class MainActivity extends Activity {
 //        Thread socketServerThread = new Thread(new SocketServerThread());
 //        socketServerThread.start();
         //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
-        screenChange(SCREEN_BATT4);
+        screenChange(SCREEN_WARNING);
     }
     private void screenChange(String screen){
 
@@ -107,7 +108,9 @@ public class MainActivity extends Activity {
                 getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(4)).commit();
                 break;
             case SCREEN_BATT5:
-                getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
+                //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
+                //TODO: NEW BATT5 DESIGN
+                getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5New.newInstance()).commit();
                 break;
             case SCREEN_OPENING:
                 getFragmentManager().beginTransaction().replace(android.R.id.content,Opening.newInstance()).commit();

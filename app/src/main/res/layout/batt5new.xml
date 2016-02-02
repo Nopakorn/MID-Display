@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
+
     <TextView
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
@@ -119,57 +120,25 @@
         android:layout_marginTop="30dp" />
 
     <ImageView
-        android:id="@+id/icon_warning"
-        android:layout_width="120dp"
-        android:layout_height="200dp"
-        android:src="@mipmap/ic_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="380dp"
+        android:id="@+id/battery_level"
+        android:src="@mipmap/batt_ok"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="BATTERY STATUS"
+        android:id="@+id/batteryStatus"
+        android:textColor="#ffffff"
+        android:textSize="28dp"
         android:layout_below="@+id/top_space"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please Check Engine\nTemperature"
-        android:textAlignment="center"
-        android:textColor="#E0E0E0"
-        android:textSize="28.0sp"
-        android:layout_below="@+id/icon_warning"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/trip_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:text="TRIP A"
-        android:textColor="#E0E0E0"
-        android:textSize="28.0sp"
-        android:layout_alignBottom="@+id/odometer"
-        android:layout_toStartOf="@+id/odometer" />
-
-    <TextView
-        android:id="@+id/odometer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:text="002558"
-        android:textColor="#E0E0E0"
-        android:textSize="36.0sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/temperature" />
-
-    <TextView
-        android:id="@+id/unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:text="miles"
-        android:textColor="#E0E0E0"
-        android:textSize="20.0sp"
-        android:layout_alignBottom="@+id/odometer"
-        android:layout_alignEnd="@+id/f_text" />
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
     <TextView
         android:id="@+id/dot_blink1"
         android:layout_width="5dp"
@@ -193,5 +162,6 @@
         android:visibility="invisible"
         android:textSize="36dp"
         android:autoText="false" />
+
 
 </RelativeLayout>

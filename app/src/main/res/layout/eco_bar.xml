@@ -147,5 +147,22 @@
         android:layout_below="@+id/top_diviner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+    <TextView
+        android:id="@+id/dot_blink1"
+        android:layout_width="5dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/dot_blink2"
+        android:layout_width="5dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:visibility="invisible" />
 
 </RelativeLayout>

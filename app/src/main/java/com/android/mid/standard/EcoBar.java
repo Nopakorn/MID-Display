@@ -17,6 +17,7 @@ import com.android.mid.R;
 import com.android.mid.customizes.CurveCustom;
 import com.android.mid.customizes.CurveGauge;
 
+import java.util.Calendar;
 import java.util.Random;
 
 /**
@@ -42,6 +43,7 @@ public class EcoBar extends Fragment {
     private boolean isRed;
     private TextView bottom_message;
     private ImageView bottom_diviner;
+    private TextView dotBlink;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -53,8 +55,11 @@ public class EcoBar extends Fragment {
 
                 if(curveGaugeItem.getProgress() + 17 >= 100){
                     curveGaugeItem.setProgress(100);
-                }else if(curveGaugeItem.getProgress() == 67){
+                }else if(curveGaugeItem.getProgress() == 50) {
                     value = curveGaugeItem.getProgress() + 16;
+                    curveGaugeItem.setProgress(value);
+                }else if(curveGaugeItem.getProgress() == 66){
+                    value = curveGaugeItem.getProgress() + 17;
                     curveGaugeItem.setProgress(value);
                 }else if(curveGaugeItem.getProgress() == 17){
                     value = curveGaugeItem.getProgress() + 16;
@@ -67,9 +72,12 @@ public class EcoBar extends Fragment {
             }else{
 
                 if(curveGaugeItem.getProgress() == 83){
-                    value = curveGaugeItem.getProgress() - 16;
+                    value = curveGaugeItem.getProgress() - 17;
                     curveGaugeItem.setProgress(value);
                 }else if(curveGaugeItem.getProgress() == 33){
+                    value = curveGaugeItem.getProgress() - 16;
+                    curveGaugeItem.setProgress(value);
+                }else if(curveGaugeItem.getProgress() == 66) {
                     value = curveGaugeItem.getProgress() - 16;
                     curveGaugeItem.setProgress(value);
                 }else{
@@ -77,7 +85,8 @@ public class EcoBar extends Fragment {
                     curveGaugeItem.setProgress(value);
                 }
             }
-            //curveGaugeItem.setProgress(value);
+//            value = 83;
+//            curveGaugeItem.setProgress(value);
             displayHandler.postDelayed(runnable, 570);
         }
     };
@@ -200,7 +209,17 @@ public class EcoBar extends Fragment {
                     break;
             }
         }
-
+        //TODO: DOTBLINK
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
+        Calendar calendar = Calendar.getInstance();
+        int hours = calendar.get(Calendar.HOUR);
+        if (hours >= 10) {
+            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
+        } else {
+            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
+        }
+        dotBlink.setVisibility(View.VISIBLE);
+        dotBlink.startAnimation(animation);
     }
 
 
