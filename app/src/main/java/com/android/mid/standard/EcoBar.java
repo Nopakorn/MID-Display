@@ -1,6 +1,7 @@
 package com.android.mid.standard;
 
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
+import com.android.mid.customizes.CurveCustom;
 import com.android.mid.customizes.CurveGauge;
 
 import java.util.Random;
@@ -38,22 +40,45 @@ public class EcoBar extends Fragment {
     private Handler batteryHandler;
     private int status;
     private boolean isRed;
+    private TextView bottom_message;
+    private ImageView bottom_diviner;
 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             int value;
             int randomInt = random.nextInt(100 + 1);
+//
+            if(randomInt >= curveGaugeItem.getProgress()){
 
-            if (randomInt >= curveGaugeItem.getProgress()) {
-                value = ((curveGaugeItem.getProgress() + 5) > 100) ? 100 : curveGaugeItem.getProgress() + 5;
-            } else {
-                value = curveGaugeItem.getProgress() - 1;
+                if(curveGaugeItem.getProgress() + 17 >= 100){
+                    curveGaugeItem.setProgress(100);
+                }else if(curveGaugeItem.getProgress() == 67){
+                    value = curveGaugeItem.getProgress() + 16;
+                    curveGaugeItem.setProgress(value);
+                }else if(curveGaugeItem.getProgress() == 17){
+                    value = curveGaugeItem.getProgress() + 16;
+                    curveGaugeItem.setProgress(value);
+                }else{
+                    value = curveGaugeItem.getProgress() + 17;
+                    curveGaugeItem.setProgress(value);
+                }
+
+            }else{
+
+                if(curveGaugeItem.getProgress() == 83){
+                    value = curveGaugeItem.getProgress() - 16;
+                    curveGaugeItem.setProgress(value);
+                }else if(curveGaugeItem.getProgress() == 33){
+                    value = curveGaugeItem.getProgress() - 16;
+                    curveGaugeItem.setProgress(value);
+                }else{
+                    value = curveGaugeItem.getProgress() - 17;
+                    curveGaugeItem.setProgress(value);
+                }
             }
-
-            curveGaugeItem.setProgress(value);
-
-            displayHandler.postDelayed(runnable, 100);
+            //curveGaugeItem.setProgress(value);
+            displayHandler.postDelayed(runnable, 570);
         }
     };
 
@@ -71,9 +96,11 @@ public class EcoBar extends Fragment {
                     break;
                 case KEY_BATTERY_LOW:
                     if (isRed) {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_low_black, getActivity().getTheme()));
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
                     } else {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_low_red, getActivity().getTheme()));
+                        bottom_message.setVisibility(View.INVISIBLE);
+                        bottom_diviner.setVisibility(View.INVISIBLE);
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
                     }
 
                     isRed = !isRed;
@@ -115,11 +142,14 @@ public class EcoBar extends Fragment {
         View curveGaugeView = layoutInflater.inflate(R.layout.item_curve_gauge, null);
         curveGaugeItem = new CurveGaugeItem(curveGaugeView);
         curveGaugeItem.setTitle("Eco-drive Indicator");
-        curveGaugeItem.setSubTitle("ECO");
+        //curveGaugeItem.setSubTitle("ECO");
 
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
+        //animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
         globe = curveGaugeItem.getGlobe();
-        globe.startAnimation(animation);
+        //globe.startAnimation(animation);
+
+        bottom_message = (TextView) view.findViewById(R.id.bottom_message);
+        bottom_diviner = (ImageView) view.findViewById(R.id.bottom_diviner);
 
         linearLayout = (LinearLayout) view.findViewById(R.id.display);
         linearLayout.addView(curveGaugeView);
@@ -138,9 +168,9 @@ public class EcoBar extends Fragment {
                 case KEY_BATTERY_OK:
                 case KEY_BATTERY_CHARGED:
                     if (status == KEY_BATTERY_OK) {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_ok, getActivity().getTheme()));
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.ok_bar, getActivity().getTheme()));
                     } else {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_charging, getActivity().getTheme()));
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.chg_bar, getActivity().getTheme()));
                     }
 
                     batteryStatus.setVisibility(View.VISIBLE);
@@ -156,9 +186,9 @@ public class EcoBar extends Fragment {
                 case KEY_BATTERY_CHARGING:
                 case KEY_BATTERY_LOW:
                     if (status == KEY_BATTERY_CHARGING) {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_charging, getActivity().getTheme()));
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.chg_bar, getActivity().getTheme()));
                     } else {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.battery_low_black, getActivity().getTheme()));
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
                         isRed = false;
 
                         batteryStatus.setVisibility(View.VISIBLE);
@@ -170,7 +200,10 @@ public class EcoBar extends Fragment {
                     break;
             }
         }
+
     }
+
+
 
     @Override
     public void onStop() {
@@ -190,7 +223,7 @@ public class EcoBar extends Fragment {
 
         public CurveGaugeItem(View view) {
             title = (TextView) view.findViewById(R.id.title);
-            subTitle = (TextView) view.findViewById(R.id.sub_title);
+            //subTitle = (TextView) view.findViewById(R.id.sub_title);
             globe = (ImageView) view.findViewById(R.id.globe);
             curveGauge = (CurveGauge) view.findViewById(R.id.curve_gauge);
         }

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000">
+    android:background="#000000"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="326dp"
@@ -12,5 +13,7 @@
         android:text="Infomation"
         android:id="@+id/textInfo"
         android:layout_gravity="center_horizontal"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:layout_weight="0.23"
+        android:layout_marginLeft="10dp" />
 </LinearLayout>

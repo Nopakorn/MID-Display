@@ -85,9 +85,11 @@ public class MainActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         info = (TextView) findViewById(R.id.textInfo);
-        Thread socketServerThread = new Thread(new SocketServerThread());
-        socketServerThread.start();
+
+//        Thread socketServerThread = new Thread(new SocketServerThread());
+//        socketServerThread.start();
         //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
+        screenChange(SCREEN_BATT4);
     }
     private void screenChange(String screen){
 
@@ -141,7 +143,7 @@ public class MainActivity extends Activity {
                     @Override
                     public void run() {
                         info.setText("I'm waiting here: "
-                                + serverSocket.getLocalPort());
+                                + serverSocket.getLocalPort() + "\n" + getIpAddress());
                     }
                 });
 

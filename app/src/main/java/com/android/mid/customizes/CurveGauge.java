@@ -1,6 +1,8 @@
 package com.android.mid.customizes;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 
@@ -22,5 +24,11 @@ public class CurveGauge extends ProgressBar {
         super(context, attrs, defStyle);
 
         setProgressDrawable(context.getResources().getDrawable(R.drawable.curve_gauge));
+    }
+
+    @Override
+    protected synchronized void onDraw(Canvas canvas) {
+
+        super.onDraw(canvas);
     }
 }

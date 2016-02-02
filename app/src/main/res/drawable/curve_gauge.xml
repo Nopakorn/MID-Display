@@ -2,9 +2,36 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@android:id/background"
-        android:drawable="@mipmap/curve_gauge_empty" />
+        android:drawable="@mipmap/curve_empty" />
 
     <item android:id="@android:id/progress">
-        <clip android:drawable="@mipmap/curve_gauge_full" />
+        <rotate
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:drawable="@mipmap/curve_full"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:fromDegrees="-180"
+            android:toDegrees="-360"
+
+            />
+
     </item>
 </layer-list>
+<!--<rotate xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:fromDegrees="270"-->
+    <!--android:toDegrees="270">-->
+    <!--<shape android:id ="@android:id/background"-->
+        <!--android:innerRadiusRatio="2.5"-->
+        <!--android:shape="ring"-->
+        <!--android:thickness="1dp"-->
+        <!--android:useLevel="true"-->
+        <!-->-->
+
+        <!--<gradient-->
+            <!--android:angle="0"-->
+            <!--android:endColor="#007DD6"-->
+            <!--android:startColor="#007DD6"-->
+            <!--android:type="sweep"-->
+            <!--android:useLevel="false" />-->
+    <!--</shape>-->
+<!--</rotate>-->
