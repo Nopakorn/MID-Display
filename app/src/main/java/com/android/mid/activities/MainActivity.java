@@ -90,7 +90,7 @@ public class MainActivity extends Activity {
 //        Thread socketServerThread = new Thread(new SocketServerThread());
 //        socketServerThread.start();
         //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
-        screenChange(SCREEN_WARNING);
+        screenChange(SCREEN_OPENING);
     }
     private void screenChange(String screen){
 
