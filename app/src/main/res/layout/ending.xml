@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
 
     <!--w:385dp h:565dp-->
     <ImageView
-        android:id="@+id/image_background"
+        android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/bg_opening"
-        android:scaleType="fitXY"
-        android:visibility="visible" />
+        android:src="@mipmap/ring_empty_00"
+        android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/image_view"
-        android:layout_width="wrap_content"
+        android:id="@+id/image_icon"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
-        android:src="@mipmap/ic_denso" />
+        android:layout_marginTop="220dp"
+        android:src="@mipmap/ic_denso"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="55dp"
         android:text="THANK YOU"
         android:textColor="#FFFFFF"
-        android:textSize="40.0sp"
-        android:textStyle="bold" />
+        android:textSize="46sp"
+
+        android:visibility="invisible"
+        android:layout_below="@+id/image_icon"
+        android:textIsSelectable="false" />
 
 </RelativeLayout>

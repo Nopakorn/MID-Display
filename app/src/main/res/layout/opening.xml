@@ -34,6 +34,6 @@
         android:textSize="48.0sp"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="240dp" />
+        android:layout_marginTop="280dp" />
 
 </RelativeLayout>

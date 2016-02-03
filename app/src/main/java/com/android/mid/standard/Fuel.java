@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -133,6 +134,7 @@ public class Fuel extends Fragment {
         private TextView interval3;
         private TextView interval4;
         private Gauge gauge;
+        private ImageView imageLevel;
 
         public GaugeItem(View view) {
             title = (TextView) view.findViewById(R.id.title);
@@ -178,6 +180,10 @@ public class Fuel extends Fragment {
 
                     break;
             }
+        }
+
+        public void setProgressLevel(){
+
         }
 
         public void setProgress(int value) {

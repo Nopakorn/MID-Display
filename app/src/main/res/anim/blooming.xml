@@ -31,7 +31,7 @@
         />
     <item
         android:drawable="@mipmap/ring_full_00"
-        android:duration="375"
+        android:duration="1000"
 
         />
 

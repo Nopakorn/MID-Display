@@ -25,6 +25,7 @@ public class Opening extends Fragment {
     private TextView textView;
     private ProgressBar blooming;
     private Animation animation;
+    private Handler displayHandler;
 
     public static Opening newInstance() {
         return new Opening();
@@ -51,7 +52,7 @@ public class Opening extends Fragment {
         blooming.setVisibility(View.VISIBLE);
         blooming.startAnimation(animation);
 
-        //imageView = (ImageView) view.findViewById(R.id.image_view);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -60,10 +61,7 @@ public class Opening extends Fragment {
             }
         }, 3000);
 
-        /*animation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
-        imageView = (ImageView) view.findViewById(R.id.image_view);
-        imageView.setVisibility(View.VISIBLE);
-        imageView.startAnimation(animation);*/
+
 
         textView = (TextView) view.findViewById(R.id.text_view);
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
@@ -77,21 +75,13 @@ public class Opening extends Fragment {
             }
         }, 1500);
 
-        /*relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_ending);
-        animation = AnimationUtils.loadAnimation(getContext(), R.anim.float_in);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                relativeLayout.startAnimation(animation);
-            }
-        }, 6000);*/
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
+        //displayHandler.removeCallbacks(runable);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
         relativeLayout.startAnimation(animation);
     }
 }
