@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
@@ -25,6 +26,7 @@ public class Batt5New extends Fragment {
 
     private ImageView batteryLevel;
     private LinearLayout  linearLayout;
+    private RelativeLayout relativeLayout;
     private TextView batteryStatus;
     private TextView dotBlink;
     private Animation animation;
@@ -46,9 +48,15 @@ public class Batt5New extends Fragment {
                     batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
                     break;
                 case 3:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
                     break;
                 case 4:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
+                    break;
+                case 5:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
+                    break;
+                case 6:
                     stateBattery = 0;
                     break;
             }
@@ -73,13 +81,14 @@ public class Batt5New extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
 
         batteryLevel= (ImageView) view.findViewById(R.id.battery_level);
 
         //TODO: DOTBLINK
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
-        int hours = calendar.get(Calendar.HOUR);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
         if (hours >= 10) {
             dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
         } else {
@@ -96,5 +105,7 @@ public class Batt5New extends Fragment {
     public void onStop() {
         super.onStop();
         displayHandler.removeCallbacks(runnable);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        relativeLayout.startAnimation(animation);
     }
 }

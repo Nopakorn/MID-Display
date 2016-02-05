@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
@@ -32,6 +33,7 @@ public class EcoBar extends Fragment {
 
     private LinearLayout linearLayout;
     private LayoutInflater layoutInflater;
+    private RelativeLayout relativeLayout;
     private CurveGaugeItem curveGaugeItem;
     private Animation animation;
     private ImageView globe;
@@ -44,6 +46,7 @@ public class EcoBar extends Fragment {
     private TextView bottom_message;
     private ImageView bottom_diviner;
     private TextView dotBlink;
+    private TextView accessory;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -98,8 +101,13 @@ public class EcoBar extends Fragment {
                 case KEY_BATTERY_CHARGING:
                     if (batteryStatus.getVisibility() == View.VISIBLE) {
                         batteryStatus.setVisibility(View.INVISIBLE);
+                        bottom_message.setVisibility(View.VISIBLE);
+                        bottom_diviner.setVisibility(View.VISIBLE);
+
                     } else {
                         batteryStatus.setVisibility(View.VISIBLE);
+                        bottom_message.setVisibility(View.INVISIBLE);
+                        bottom_diviner.setVisibility(View.INVISIBLE);
                     }
 
                     break;
@@ -147,6 +155,7 @@ public class EcoBar extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         layoutInflater = LayoutInflater.from(getActivity());
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
 
         View curveGaugeView = layoutInflater.inflate(R.layout.item_curve_gauge, null);
         curveGaugeItem = new CurveGaugeItem(curveGaugeView);
@@ -171,14 +180,20 @@ public class EcoBar extends Fragment {
         Bundle bundle = getArguments();
         status = bundle.getInt(KEY_BATTERY_STATUS);
 
+
+
         batteryStatus = (ImageView) view.findViewById(R.id.battery_status);
         if (status > 0) {
             switch (status) {
                 case KEY_BATTERY_OK:
                 case KEY_BATTERY_CHARGED:
                     if (status == KEY_BATTERY_OK) {
+                        bottom_message.setVisibility(View.INVISIBLE);
+                        bottom_diviner.setVisibility(View.INVISIBLE);
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.ok_bar, getActivity().getTheme()));
                     } else {
+                        bottom_message.setVisibility(View.INVISIBLE);
+                        bottom_diviner.setVisibility(View.INVISIBLE);
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.chg_bar, getActivity().getTheme()));
                     }
 
@@ -188,6 +203,8 @@ public class EcoBar extends Fragment {
                         @Override
                         public void run() {
                             batteryStatus.setVisibility(View.INVISIBLE);
+                            bottom_message.setVisibility(View.VISIBLE);
+                            bottom_diviner.setVisibility(View.VISIBLE);
                         }
                     }, 3000);
 
@@ -212,7 +229,7 @@ public class EcoBar extends Fragment {
         //TODO: DOTBLINK
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
-        int hours = calendar.get(Calendar.HOUR);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
         if (hours >= 10) {
             dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
         } else {
@@ -232,6 +249,8 @@ public class EcoBar extends Fragment {
         if (batteryHandler != null) {
             batteryHandler.removeCallbacks(battable);
         }
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        relativeLayout.startAnimation(animation);
     }
 
     private class CurveGaugeItem {

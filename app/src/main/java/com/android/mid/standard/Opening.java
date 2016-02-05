@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -53,6 +54,7 @@ public class Opening extends Fragment {
         blooming.startAnimation(animation);
 
 
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -66,6 +68,7 @@ public class Opening extends Fragment {
         textView = (TextView) view.findViewById(R.id.text_view);
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
         textView.setTypeface(custom_font);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

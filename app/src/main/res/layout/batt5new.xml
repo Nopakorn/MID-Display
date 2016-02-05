@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
@@ -8,11 +9,12 @@
         android:id="@+id/temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
         android:text="ODO     20558"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_toEndOf="@+id/time_text" />
+        android:layout_below="@+id/center_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <ImageView
         android:id="@+id/top_diviner"
@@ -39,17 +41,6 @@
         android:visibility="invisible"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="12:30"
-        android:id="@+id/time_text"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/bottom_message"
-        android:textColor="#ffffff"
-        android:textSize="38dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +50,7 @@
         android:id="@+id/cel_text"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:textSize="38dp"
+        android:textSize="34dp"
         android:textColor="#ffffff"
         android:singleLine="true" />
 
@@ -70,9 +61,10 @@
         android:text="C"
         android:id="@+id/center_text"
         android:textColor="#ffffff"
-        android:textSize="38dp"
+        android:textSize="34dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,8 +92,8 @@
         android:layout_marginRight="7dp" />
 
     <ImageView
-        android:layout_width="34dp"
-        android:layout_height="37dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/fuel_logo"
         android:src="@mipmap/fuel_logo"
         android:layout_alignBottom="@+id/f_text"
@@ -139,29 +131,40 @@
         android:layout_below="@+id/top_space"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+
+    <TextClock
+        android:id="@+id/text_clock"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textColor="#E0E0E0"
+        android:textSize="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/e_text"
+        android:layout_toStartOf="@+id/center_text"
+        android:format24Hour="HH:mm"
+        android:maxLines="50"
+        />
+
+
+    <TextView
+        android:id="@+id/dot_blink2"
+        android:layout_width="7dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/dot_blink1"
         android:layout_width="5dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="20.2dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="12dp"
         android:background="#000000"
-        android:visibility="invisible"
-        android:clickable="false"
-        android:textIsSelectable="false"
-        android:textSize="36dp"
-        android:autoText="false" />
+        android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/dot_blink2"
-        android:layout_width="5dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="20.2dp"
-        android:background="#000000"
-        android:visibility="invisible"
-        android:textSize="36dp"
-        android:autoText="false" />
+
 
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.android.mid.standard;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,10 +11,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
 import com.android.mid.customizes.Gauge;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -22,10 +26,20 @@ import java.util.Random;
  * Created by nachanok.boo on 11/25/2015.
  */
 public class Fuel extends Fragment {
+
+    private TextView celText;
+    private TextView tempText;
+    private TextView dText;
+    private TextView eText;
+    private TextView fText;
+    private TextView clockText;
+    private TextView bottom_message;
+
     private TextView dotBlink;
     private Animation animation;
     private LinearLayout linearLayout;
     private LayoutInflater layoutInflater;
+    private RelativeLayout relativeLayout;
     private GaugeItem gaugeItem1;
     private GaugeItem gaugeItem2;
     private Random random;
@@ -77,9 +91,11 @@ public class Fuel extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
+
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
-        int hours = calendar.get(Calendar.HOUR);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
         if (hours >= 10) {
             dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
         } else {
@@ -106,15 +122,31 @@ public class Fuel extends Fragment {
             gaugeItem2.setInterval(i, ((i - 1) * 20));
         }
 
-        View resetView = layoutInflater.inflate(R.layout.item_reset, null);
+        //View resetView = layoutInflater.inflate(R.layout.item_reset, null);
 
         linearLayout = (LinearLayout) view.findViewById(R.id.display);
         linearLayout.addView(gaugeView1);
         linearLayout.addView(gaugeView2);
-        linearLayout.addView(resetView);
+       // linearLayout.addView(resetView);
+        //TODO: SET FONT FACE
+        celText = (TextView) view.findViewById(R.id.cel_text);
+        dText = (TextView) view.findViewById(R.id.center_text);
+        eText = (TextView) view.findViewById(R.id.e_text);
+        fText = (TextView) view.findViewById(R.id.f_text);
+        tempText = (TextView) view.findViewById(R.id.temperature);
+        clockText = (TextView) view.findViewById(R.id.text_clock);
+        bottom_message = (TextView) view.findViewById(R.id.bottom_message);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
+        celText.setTypeface(custom_font);
+        dText.setTypeface(custom_font);
+        eText.setTypeface(custom_font);
+        fText.setTypeface(custom_font);
+        tempText.setTypeface(custom_font);
+        clockText.setTypeface(custom_font);
+        bottom_message.setTypeface(custom_font);
 
         random = new Random();
-
         displayHandler = new Handler();
         displayHandler.post(runnable);
     }
@@ -124,6 +156,8 @@ public class Fuel extends Fragment {
         super.onStop();
 
         displayHandler.removeCallbacks(runnable);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        relativeLayout.startAnimation(animation);
     }
 
     private class GaugeItem {
@@ -144,6 +178,14 @@ public class Fuel extends Fragment {
             interval3 = (TextView) view.findViewById(R.id.interval3);
             interval4 = (TextView) view.findViewById(R.id.interval4);
             gauge = (Gauge) view.findViewById(R.id.gauge);
+
+            Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
+            title.setTypeface(custom_font);
+            unit.setTypeface(custom_font);
+            interval1.setTypeface(custom_font);
+            interval2.setTypeface(custom_font);
+            interval3.setTypeface(custom_font);
+            interval4.setTypeface(custom_font);
         }
 
         public void setTitle(String text) {

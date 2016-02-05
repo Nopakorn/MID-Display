@@ -1,6 +1,7 @@
 <resources>
-    <style name="AppTheme" parent="AppTheme.Base" />
-
+    <style name="AppTheme" parent="AppTheme.Base" >
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+    </style>
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
@@ -18,6 +19,8 @@ import java.util.Calendar;
  * Created by nachanok.boo on 11/26/2015.
  */
 public class Warning extends Fragment {
+
+    private RelativeLayout relativeLayout;
     private TextView dotBlink;
     private Animation animation;
     private TextView odometer;
@@ -55,6 +58,8 @@ public class Warning extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
+
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
         int hours = calendar.get(Calendar.HOUR);
@@ -77,5 +82,7 @@ public class Warning extends Fragment {
         super.onStop();
 
         displayHandler.removeCallbacks(runnable);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        relativeLayout.startAnimation(animation);
     }
 }

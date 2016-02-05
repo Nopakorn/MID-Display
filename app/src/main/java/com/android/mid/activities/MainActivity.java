@@ -33,16 +33,16 @@ import java.util.Enumeration;
  * Created by nachanok.boo on 11/23/2015.
  */
 public class MainActivity extends Activity {
-    public static final String SCREEN_BATT1 = "batt1";
-    public static final String SCREEN_BATT2 = "batt2";
-    public static final String SCREEN_BATT3 = "batt3";
-    public static final String SCREEN_BATT4 = "batt4";
-    public static final String SCREEN_BATT5 = "batt5";
-    public static final String SCREEN_OPENING = "opening";
-    public static final String SCREEN_ENDING = "ending";
-    public static final String SCREEN_FUEL = "fuel";
-    public static final String SCREEN_WARNING = "warning";
-    public static final String SCREEN_ECO_BAR = "eco_bar";
+    public static final String SCREEN_BATT1 = "BATT 1";
+    public static final String SCREEN_BATT2 = "BATT 2";
+    public static final String SCREEN_BATT3 = "BATT 3";
+    public static final String SCREEN_BATT4 = "BATT 4";
+    public static final String SCREEN_BATT5 = "BATT 5";
+    public static final String SCREEN_OPENING = "OPENING";
+    public static final String SCREEN_ENDING = "ENDING";
+    public static final String SCREEN_FUEL = "FUEL";
+    public static final String SCREEN_WARNING = "WARNING";
+    public static final String SCREEN_ECO_BAR = "ECO";
 
 
     private int screen = 0;

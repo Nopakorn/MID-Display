@@ -42,23 +42,21 @@
         android:id="@+id/interval2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="105dp"
         android:text="{2}"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_below="@+id/gauge"
-        android:layout_toStartOf="@+id/interval3" />
+        android:layout_alignTop="@+id/interval1" />
 
     <TextView
         android:id="@+id/interval3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
+        android:layout_marginLeft="190dp"
         android:text="{3}"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_below="@+id/gauge"
-        android:layout_toStartOf="@+id/unit" />
+        android:layout_below="@+id/gauge" />
 
     <TextView
         android:id="@+id/interval4"
@@ -73,8 +71,8 @@
 
     <com.android.mid.customizes.Gauge
         android:id="@+id/gauge"
-        android:layout_width="320dp"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="47dp"
         android:layout_marginLeft="30dp"
         android:scaleType="fitXY"
         android:progress="0"
