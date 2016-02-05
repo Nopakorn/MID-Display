@@ -1,6 +1,7 @@
 package com.android.mid.standard;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,10 +44,17 @@ public class EcoBar extends Fragment {
     private Handler batteryHandler;
     private int status;
     private boolean isRed;
-    private TextView bottom_message;
+
     private ImageView bottom_diviner;
     private TextView dotBlink;
-    private TextView accessory;
+
+    private TextView celText;
+    private TextView tempText;
+    private TextView dText;
+    private TextView eText;
+    private TextView fText;
+    private TextView clockText;
+    private TextView bottom_message;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -165,8 +173,24 @@ public class EcoBar extends Fragment {
         //animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
         globe = curveGaugeItem.getGlobe();
         //globe.startAnimation(animation);
-
+        //TODO: SET FONT FACE
+        celText = (TextView) view.findViewById(R.id.cel_text);
+        dText = (TextView) view.findViewById(R.id.center_text);
+        eText = (TextView) view.findViewById(R.id.e_text);
+        fText = (TextView) view.findViewById(R.id.f_text);
+        tempText = (TextView) view.findViewById(R.id.temperature);
+        clockText = (TextView) view.findViewById(R.id.text_clock);
         bottom_message = (TextView) view.findViewById(R.id.bottom_message);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
+        celText.setTypeface(custom_font);
+        dText.setTypeface(custom_font);
+        eText.setTypeface(custom_font);
+        fText.setTypeface(custom_font);
+        tempText.setTypeface(custom_font);
+        clockText.setTypeface(custom_font);
+        bottom_message.setTypeface(custom_font);
+
         bottom_diviner = (ImageView) view.findViewById(R.id.bottom_diviner);
 
         linearLayout = (LinearLayout) view.findViewById(R.id.display);
@@ -261,9 +285,11 @@ public class EcoBar extends Fragment {
 
         public CurveGaugeItem(View view) {
             title = (TextView) view.findViewById(R.id.title);
-            //subTitle = (TextView) view.findViewById(R.id.sub_title);
             globe = (ImageView) view.findViewById(R.id.globe);
             curveGauge = (CurveGauge) view.findViewById(R.id.curve_gauge);
+            //subTitle = (TextView) view.findViewById(R.id.sub_title);
+            Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
+            title.setTypeface(custom_font);
         }
 
         public void setTitle(String text) {
