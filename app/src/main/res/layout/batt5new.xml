@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="30\u2103"
+        android:text="30°C"
         android:id="@+id/cel_text"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -150,8 +150,8 @@
         android:id="@+id/dot_blink2"
         android:layout_width="7dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="10dp"
         android:background="#000000"
         android:visibility="invisible" />
 

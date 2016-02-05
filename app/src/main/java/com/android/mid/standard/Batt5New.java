@@ -1,6 +1,7 @@
 package com.android.mid.standard;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,12 @@ public class Batt5New extends Fragment {
     private Handler displayHandler;
     private int stateBattery = 0;
 
+    private TextView celText;
+    private TextView tempText;
+    private TextView dText;
+    private TextView eText;
+    private TextView fText;
+    private TextView clockText;
 
 
     private Runnable runnable = new Runnable() {
@@ -99,6 +106,23 @@ public class Batt5New extends Fragment {
 
         displayHandler = new Handler();
         displayHandler.post(runnable);
+        //TODO: SET FONT FACE
+        celText = (TextView) view.findViewById(R.id.cel_text);
+        dText = (TextView) view.findViewById(R.id.center_text);
+        eText = (TextView) view.findViewById(R.id.e_text);
+        fText = (TextView) view.findViewById(R.id.f_text);
+        tempText = (TextView) view.findViewById(R.id.temperature);
+        clockText = (TextView) view.findViewById(R.id.text_clock);
+        batteryStatus = (TextView) view.findViewById(R.id.batteryStatus);
+
+        Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
+        celText.setTypeface(custom_font);
+        dText.setTypeface(custom_font);
+        eText.setTypeface(custom_font);
+        fText.setTypeface(custom_font);
+        tempText.setTypeface(custom_font);
+        clockText.setTypeface(custom_font);
+        batteryStatus.setTypeface(custom_font);
 
     }
 

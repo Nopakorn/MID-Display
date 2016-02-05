@@ -21,6 +21,7 @@ import com.android.mid.R;
  * Created by nachanok.boo on 11/23/2015.
  */
 public class Opening extends Fragment {
+
     private RelativeLayout relativeLayout;
     private ImageView imageView;
     private TextView textView;
