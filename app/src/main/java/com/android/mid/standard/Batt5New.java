@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,9 @@ public class Batt5New extends Fragment {
     private ImageView batteryLevel;
     private LinearLayout  linearLayout;
     private RelativeLayout relativeLayout;
+    private RelativeLayout relativeLayout_display;
+    private RelativeLayout relativeLayout_head;
+
     private TextView batteryStatus;
     private TextView dotBlink;
     private Animation animation;
@@ -41,31 +45,34 @@ public class Batt5New extends Fragment {
     private TextView fText;
     private TextView clockText;
 
-
+    private boolean flag = false;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             stateBattery++;
-            switch (stateBattery){
-                case 1:
-                    //TODO: START FROM LOW BATTERY DISPLAY
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_low, getActivity().getTheme()));
-                    break;
-                case 2:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
-                    break;
-                case 3:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
-                    break;
-                case 4:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
-                    break;
-                case 5:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
-                    break;
-                case 6:
-                    stateBattery = 0;
-                    break;
+            if(flag) {
+                switch (stateBattery){
+                    case 1:
+                        //TODO: START FROM LOW BATTERY DISPLAY
+                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_low, getActivity().getTheme()));
+                        break;
+                    case 2:
+                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
+                        break;
+                    case 3:
+                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
+                        break;
+                    case 4:
+                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
+                        break;
+                    case 5:
+                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
+                        break;
+                    case 6:
+                        stateBattery = 0;
+                        break;
+                }
+
             }
             displayHandler.postDelayed(runnable, 1000);
         }
@@ -89,6 +96,8 @@ public class Batt5New extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
+        relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
+        relativeLayout_head = (RelativeLayout) view.findViewById(R.id.relativeLayout_head);
 
         batteryLevel= (ImageView) view.findViewById(R.id.battery_level);
 
@@ -104,8 +113,6 @@ public class Batt5New extends Fragment {
         dotBlink.setVisibility(View.VISIBLE);
         dotBlink.startAnimation(animation);
 
-        displayHandler = new Handler();
-        displayHandler.post(runnable);
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
         dText = (TextView) view.findViewById(R.id.center_text);
@@ -123,6 +130,27 @@ public class Batt5New extends Fragment {
         tempText.setTypeface(custom_font);
         clockText.setTypeface(custom_font);
         batteryStatus.setTypeface(custom_font);
+
+        Log.d("FLAG", "before animation " + flag);
+        displayHandler = new Handler();
+        displayHandler.post(runnable);
+
+        //TODO: ANIMATION HEADER AND DISPLAY BODY
+        relativeLayout_display.setVisibility(View.INVISIBLE);
+        Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
+        relativeLayout_head.setAnimation(animation_in);
+        callDisplay();
+
+
+
+    }
+
+    public void callDisplay() {
+        //relativeLayout_display.setVisibility(View.VISIBLE);
+        Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_batt5);
+        relativeLayout_display.setAnimation(animation_in_display);
+        flag = true;
+        Log.d("FLAG","after animation " +flag);
 
     }
 

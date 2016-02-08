@@ -35,6 +35,10 @@ public class Fuel extends Fragment {
     private TextView clockText;
     private TextView bottom_message;
 
+    private RelativeLayout relativeLayout_head;
+    private RelativeLayout relativeLayout_display;
+    private RelativeLayout relativeLayout_bottom;
+
     private TextView dotBlink;
     private Animation animation;
     private LinearLayout linearLayout;
@@ -92,6 +96,9 @@ public class Fuel extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
+        relativeLayout_head = (RelativeLayout) view.findViewById(R.id.relativeLayout_head);
+        relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
+        relativeLayout_bottom = (RelativeLayout) view.findViewById(R.id.display_bottom);
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
@@ -124,9 +131,10 @@ public class Fuel extends Fragment {
 
         //View resetView = layoutInflater.inflate(R.layout.item_reset, null);
 
-        linearLayout = (LinearLayout) view.findViewById(R.id.display);
+        linearLayout = (LinearLayout) view.findViewById(R.id.display_linear);
         linearLayout.addView(gaugeView1);
         linearLayout.addView(gaugeView2);
+//        relativeLayout_display.addView(linearLayout);
        // linearLayout.addView(resetView);
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
@@ -149,6 +157,21 @@ public class Fuel extends Fragment {
         random = new Random();
         displayHandler = new Handler();
         displayHandler.post(runnable);
+
+        //TODO: ANIMATION HEADER AND DISPLAY BODY
+        relativeLayout_display.setVisibility(View.INVISIBLE);
+        relativeLayout_bottom.setVisibility(View.INVISIBLE);
+        Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
+        relativeLayout_head.setAnimation(animation_in);
+        callDisplay();
+    }
+
+    public void callDisplay() {
+        relativeLayout_display.setVisibility(View.VISIBLE);
+        relativeLayout_bottom.setVisibility(View.VISIBLE);
+        Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_display);
+        relativeLayout_display.setAnimation(animation_in_display);
+        relativeLayout_bottom.setAnimation(animation_in_display);
     }
 
     @Override

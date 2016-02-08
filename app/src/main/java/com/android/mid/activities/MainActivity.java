@@ -87,10 +87,10 @@ public class MainActivity extends Activity {
 
         info = (TextView) findViewById(R.id.textInfo);
 
-//        Thread socketServerThread = new Thread(new SocketServerThread());
-//        socketServerThread.start();
+        Thread socketServerThread = new Thread(new SocketServerThread());
+        socketServerThread.start();
         //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
-        screenChange(SCREEN_WARNING);
+        //screenChange(SCREEN_BATT5);
     }
     private void screenChange(String screen){
 

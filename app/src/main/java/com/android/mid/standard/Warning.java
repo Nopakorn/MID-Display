@@ -115,11 +115,13 @@ public class Warning extends Fragment {
         displayHandler = new Handler();
         displayHandler.post(runnable);
 
+        //TODO: ANIMATION HEADER AND DISPLAY BODY
+        relativeLayout_display.setVisibility(View.INVISIBLE);
         Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
         relativeLayout_head.setAnimation(animation_in);
         callDisplay();
     }
-    
+
     public void callDisplay() {
         relativeLayout_display.setVisibility(View.VISIBLE);
         Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_display);

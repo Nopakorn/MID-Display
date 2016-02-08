@@ -38,6 +38,8 @@ public class EcoBar extends Fragment {
     private RelativeLayout relativeLayout;
     private RelativeLayout relativeLayout_head;
     private RelativeLayout relativeLayout_display;
+    private RelativeLayout relativeLayout_bottom;
+
     private View curveGaugeView;
 
     private Animation animation;
@@ -174,6 +176,8 @@ public class EcoBar extends Fragment {
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
         relativeLayout_head = (RelativeLayout) view.findViewById(R.id.relativeLayout_head);
         relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
+        relativeLayout_bottom = (RelativeLayout) view.findViewById(R.id.display_bottom);
+
         curveGaugeView = layoutInflater.inflate(R.layout.item_curve_gauge, null);
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
@@ -199,10 +203,11 @@ public class EcoBar extends Fragment {
 
         relativeLayout_display.addView(curveGaugeView);
         relativeLayout_display.setVisibility(View.INVISIBLE);
+        relativeLayout_bottom.setVisibility(View.INVISIBLE);
 
 
         random = new Random();
-
+        //TODO: ANIMATION HEADER AND DISPLAY BODY
         Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
         relativeLayout_head.setAnimation(animation_in);
         callDisplay();
@@ -281,8 +286,10 @@ public class EcoBar extends Fragment {
 
     public void callDisplay() {
         relativeLayout_display.setVisibility(View.VISIBLE);
+        relativeLayout_bottom.setVisibility(View.VISIBLE);
         Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_display);
         relativeLayout_display.setAnimation(animation_in_display);
+        relativeLayout_bottom.setAnimation(animation_in_display);
     }
 
 
