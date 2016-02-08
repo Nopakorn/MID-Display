@@ -49,32 +49,28 @@ public class Batt5New extends Fragment {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            stateBattery++;
-            if(flag) {
-                switch (stateBattery){
-                    case 1:
-                        //TODO: START FROM LOW BATTERY DISPLAY
-                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_low, getActivity().getTheme()));
-                        break;
-                    case 2:
-                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
-                        break;
-                    case 3:
-                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
-                        break;
-                    case 4:
-                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
-                        break;
-                    case 5:
-                        batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
-                        break;
-                    case 6:
-                        stateBattery = 0;
-                        break;
-                }
 
+            stateBattery++;
+            switch (stateBattery){
+                case 1:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
+                    break;
+                case 2:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
+                    break;
+                case 3:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
+                    break;
+                case 4:
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
+                    break;
+                case 5:
+                    //TODO: START FROM LOW BATTERY DISPLAY
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_low, getActivity().getTheme()));
+                    stateBattery = 0;
+                    break;
             }
-            displayHandler.postDelayed(runnable, 1000);
+
         }
     };
 
@@ -133,9 +129,9 @@ public class Batt5New extends Fragment {
 
         Log.d("FLAG", "before animation " + flag);
         displayHandler = new Handler();
-        displayHandler.post(runnable);
 
-        //TODO: ANIMATION HEADER AND DISPLAY BODY
+
+        //TODO: ANIMATION HEADER AND DISPLAY BODYS
         relativeLayout_display.setVisibility(View.INVISIBLE);
         Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
         relativeLayout_head.setAnimation(animation_in);
@@ -146,11 +142,26 @@ public class Batt5New extends Fragment {
     }
 
     public void callDisplay() {
-        //relativeLayout_display.setVisibility(View.VISIBLE);
+        relativeLayout_display.setVisibility(View.VISIBLE);
         Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_batt5);
+        animation_in_display.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation arg0) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                displayHandler.post(runnable);
+            }
+        });
         relativeLayout_display.setAnimation(animation_in_display);
-        flag = true;
         Log.d("FLAG","after animation " +flag);
+
 
     }
 
