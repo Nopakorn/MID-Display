@@ -52,6 +52,7 @@ public class Opening extends Fragment {
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blooming_zoomin);
         blooming = (ProgressBar) view.findViewById(R.id.blooming);
         blooming.setVisibility(View.VISIBLE);
+        //blooming.setProgress();
         blooming.startAnimation(animation);
 
 

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,18 +36,24 @@ public class EcoBar extends Fragment {
     private LinearLayout linearLayout;
     private LayoutInflater layoutInflater;
     private RelativeLayout relativeLayout;
-    private CurveGaugeItem curveGaugeItem;
+    private RelativeLayout relativeLayout_head;
+    private RelativeLayout relativeLayout_display;
+    private View curveGaugeView;
+
     private Animation animation;
     private ImageView globe;
+    private ImageView curveBar;
     private ImageView batteryStatus;
     private Random random;
     private Handler displayHandler;
     private Handler batteryHandler;
     private int status;
+    private int curve_status = 0;
     private boolean isRed;
 
     private ImageView bottom_diviner;
     private TextView dotBlink;
+    private TextView title;
 
     private TextView celText;
     private TextView tempText;
@@ -60,47 +67,48 @@ public class EcoBar extends Fragment {
         @Override
         public void run() {
             int value;
-            int randomInt = random.nextInt(100 + 1);
-//
-            if(randomInt >= curveGaugeItem.getProgress()){
+            int randomInt = random.nextInt(6 + 1);
 
-                if(curveGaugeItem.getProgress() + 17 >= 100){
-                    curveGaugeItem.setProgress(100);
-                }else if(curveGaugeItem.getProgress() == 50) {
-                    value = curveGaugeItem.getProgress() + 16;
-                    curveGaugeItem.setProgress(value);
-                }else if(curveGaugeItem.getProgress() == 66){
-                    value = curveGaugeItem.getProgress() + 17;
-                    curveGaugeItem.setProgress(value);
-                }else if(curveGaugeItem.getProgress() == 17){
-                    value = curveGaugeItem.getProgress() + 16;
-                    curveGaugeItem.setProgress(value);
-                }else{
-                    value = curveGaugeItem.getProgress() + 17;
-                    curveGaugeItem.setProgress(value);
-                }
-
-            }else{
-
-                if(curveGaugeItem.getProgress() == 83){
-                    value = curveGaugeItem.getProgress() - 17;
-                    curveGaugeItem.setProgress(value);
-                }else if(curveGaugeItem.getProgress() == 33){
-                    value = curveGaugeItem.getProgress() - 16;
-                    curveGaugeItem.setProgress(value);
-                }else if(curveGaugeItem.getProgress() == 66) {
-                    value = curveGaugeItem.getProgress() - 16;
-                    curveGaugeItem.setProgress(value);
-                }else{
-                    value = curveGaugeItem.getProgress() - 17;
-                    curveGaugeItem.setProgress(value);
-                }
+            if (randomInt >= curve_status) {
+                value = ((curve_status + 1) > 6) ? 6 :curve_status + 1;
+            } else {
+                value = curve_status - 1;
             }
-//            value = 83;
-//            curveGaugeItem.setProgress(value);
-            displayHandler.postDelayed(runnable, 570);
-        }
-    };
+
+            curve_status = value;
+            switch (curve_status) {
+                case 1:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s1, getActivity().getTheme()));
+                    break;
+
+                case 2:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s2, getActivity().getTheme()));
+                    break;
+
+                case 3:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s3, getActivity().getTheme()));
+                    break;
+
+                case 4:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s4, getActivity().getTheme()));
+                    break;
+
+                case 5:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s5, getActivity().getTheme()));
+                    break;
+
+                case 6:
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s6, getActivity().getTheme()));
+                    break;
+
+                case 7:
+                    curve_status = 0;
+                    break;
+            }
+
+            displayHandler.postDelayed(runnable, 2000);
+}
+        };
 
     private Runnable battable = new Runnable() {
         @Override
@@ -164,15 +172,9 @@ public class EcoBar extends Fragment {
 
         layoutInflater = LayoutInflater.from(getActivity());
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
-
-        View curveGaugeView = layoutInflater.inflate(R.layout.item_curve_gauge, null);
-        curveGaugeItem = new CurveGaugeItem(curveGaugeView);
-        curveGaugeItem.setTitle("Eco-drive Indicator");
-        //curveGaugeItem.setSubTitle("ECO");
-
-        //animation = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
-        globe = curveGaugeItem.getGlobe();
-        //globe.startAnimation(animation);
+        relativeLayout_head = (RelativeLayout) view.findViewById(R.id.relativeLayout_head);
+        relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
+        curveGaugeView = layoutInflater.inflate(R.layout.item_curve_gauge, null);
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
         dText = (TextView) view.findViewById(R.id.center_text);
@@ -193,13 +195,17 @@ public class EcoBar extends Fragment {
 
         bottom_diviner = (ImageView) view.findViewById(R.id.bottom_diviner);
 
-        linearLayout = (LinearLayout) view.findViewById(R.id.display);
-        linearLayout.addView(curveGaugeView);
+
+
+        relativeLayout_display.addView(curveGaugeView);
+        relativeLayout_display.setVisibility(View.INVISIBLE);
+
 
         random = new Random();
 
-        displayHandler = new Handler();
-        displayHandler.post(runnable);
+        Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
+        relativeLayout_head.setAnimation(animation_in);
+        callDisplay();
 
         Bundle bundle = getArguments();
         status = bundle.getInt(KEY_BATTERY_STATUS);
@@ -261,8 +267,23 @@ public class EcoBar extends Fragment {
         }
         dotBlink.setVisibility(View.VISIBLE);
         dotBlink.startAnimation(animation);
+
+
+        //TODO: CURVE
+
+        curveBar = (ImageView) view.findViewById(R.id.curve_bar);
+        title = (TextView) view.findViewById(R.id.title);
+        title.setText("Eco-drive Indicator");
+        title.setTypeface(custom_font);
+        displayHandler = new Handler();
+        displayHandler.post(runnable);
     }
 
+    public void callDisplay() {
+        relativeLayout_display.setVisibility(View.VISIBLE);
+        Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_display);
+        relativeLayout_display.setAnimation(animation_in_display);
+    }
 
 
     @Override
@@ -286,7 +307,7 @@ public class EcoBar extends Fragment {
         public CurveGaugeItem(View view) {
             title = (TextView) view.findViewById(R.id.title);
             globe = (ImageView) view.findViewById(R.id.globe);
-            curveGauge = (CurveGauge) view.findViewById(R.id.curve_gauge);
+            //curveGauge = (CurveGauge) view.findViewById(R.id.curve_gauge);
             //subTitle = (TextView) view.findViewById(R.id.sub_title);
             Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
             title.setTypeface(custom_font);

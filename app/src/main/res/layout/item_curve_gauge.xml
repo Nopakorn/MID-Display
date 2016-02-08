@@ -13,8 +13,18 @@
         components:src="@mipmap/globe" /-->
 
 
-    <com.android.mid.customizes.CurveGauge
-        android:id="@+id/curve_gauge"
+    <!--<com.android.mid.customizes.CurveGauge-->
+        <!--android:id="@+id/curve_gauge"-->
+        <!--android:layout_width="252dp"-->
+        <!--android:layout_height="250dp"-->
+        <!--android:progress="0"-->
+        <!--android:scaleType="fitXY"-->
+        <!--android:layout_below="@+id/title"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="-15dp" />-->
+    <ImageView
+        android:id="@+id/curve_bar"
+        android:src="@mipmap/curve_empty"
         android:layout_width="252dp"
         android:layout_height="250dp"
         android:progress="0"

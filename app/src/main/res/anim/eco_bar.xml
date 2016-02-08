@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@mipmap/bar_s1"
+        android:duration="375"
+        />
+    <item
+        android:drawable="@mipmap/bar_s2"
+        android:duration="375"
+        />
+    <item
+        android:drawable="@mipmap/bar_s3"
+        android:duration="375"
+        />
+    <item
+        android:drawable="@mipmap/bar_s4"
+        android:duration="375"
+        />
+    <item
+        android:drawable="@mipmap/bar_s5"
+        android:duration="375"
+        />
+    <item
+        android:drawable="@mipmap/bar_s6"
+        android:duration="375"
+        />
+
+
+</animation-list>

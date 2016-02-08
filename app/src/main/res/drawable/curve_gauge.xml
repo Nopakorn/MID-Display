@@ -4,17 +4,18 @@
         android:id="@android:id/background"
         android:drawable="@mipmap/curve_empty" />
 
-    <item android:id="@android:id/progress">
-        <rotate
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:drawable="@mipmap/curve_full"
-            android:pivotX="50%"
-            android:pivotY="50%"
-            android:fromDegrees="-180"
-            android:toDegrees="-360"
-            />
-
-    </item>
+    <!--<item android:id="@android:id/progress">-->
+        <!--<rotate-->
+            <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:drawable="@mipmap/curve_full"-->
+            <!--android:pivotX="50%"-->
+            <!--android:pivotY="50%"-->
+            <!--android:fromDegrees="-180"-->
+            <!--android:toDegrees="-360"-->
+            <!--/>-->
+    <!--<item android:id="@android:id/progress">-->
+      <!-- -->
+    <!--</item>-->
 </layer-list>
 <!--<rotate xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--android:fromDegrees="270"-->

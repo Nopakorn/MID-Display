@@ -22,6 +22,9 @@ import java.util.Calendar;
 public class Warning extends Fragment {
 
     private RelativeLayout relativeLayout;
+    private RelativeLayout relativeLayout_display;
+    private RelativeLayout relativeLayout_head;
+
     private TextView dotBlink;
     private Animation animation;
     private TextView odometer;
@@ -70,6 +73,8 @@ public class Warning extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relative_layout);
+        relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
+        relativeLayout_head = (RelativeLayout) view.findViewById(R.id.relativeLayout_head);
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
@@ -109,6 +114,16 @@ public class Warning extends Fragment {
 
         displayHandler = new Handler();
         displayHandler.post(runnable);
+
+        Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
+        relativeLayout_head.setAnimation(animation_in);
+        callDisplay();
+    }
+    
+    public void callDisplay() {
+        relativeLayout_display.setVisibility(View.VISIBLE);
+        Animation animation_in_display = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_display);
+        relativeLayout_display.setAnimation(animation_in_display);
     }
 
     @Override
