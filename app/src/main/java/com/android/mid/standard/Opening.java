@@ -29,6 +29,24 @@ public class Opening extends Fragment {
     private Animation animation;
     private Handler displayHandler;
 
+
+    private Runnable runBlooming = new Runnable() {
+        @Override
+        public void run() {
+
+            blooming.setVisibility(View.GONE);
+        }
+    };
+
+    private Runnable runFadeIn = new Runnable() {
+        @Override
+        public void run() {
+            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
+            textView.setVisibility(View.VISIBLE);
+            textView.startAnimation(animation);
+        }
+    };
+
     public static Opening newInstance() {
         return new Opening();
     }
@@ -52,40 +70,23 @@ public class Opening extends Fragment {
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blooming_zoomin);
         blooming = (ProgressBar) view.findViewById(R.id.blooming);
         blooming.setVisibility(View.VISIBLE);
-        //blooming.setProgress();
         blooming.startAnimation(animation);
-
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                blooming.setVisibility(View.GONE);
-                //imageView.setVisibility(View.VISIBLE);
-            }
-        }, 3000);
-
-
 
         textView = (TextView) view.findViewById(R.id.text_view);
         Typeface custom_font = Typeface.createFromAsset(getActivity().getAssets(), "fonts/MyriadPro-Regular.otf");
         textView.setTypeface(custom_font);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
-                textView.setVisibility(View.VISIBLE);
-                textView.startAnimation(animation);
-            }
-        }, 1500);
+        displayHandler = new Handler();
+        displayHandler.postDelayed(runBlooming, 3000);
+        displayHandler.postDelayed(runFadeIn, 1500);
 
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        //displayHandler.removeCallbacks(runable);
+        displayHandler.removeCallbacks(runBlooming);
+        displayHandler.removeCallbacks(runFadeIn);
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
         relativeLayout.startAnimation(animation);
     }

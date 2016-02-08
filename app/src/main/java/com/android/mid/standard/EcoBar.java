@@ -109,7 +109,7 @@ public class EcoBar extends Fragment {
             }
 
             displayHandler.postDelayed(runnable, 2000);
-}
+        }
         };
 
     private Runnable battable = new Runnable() {
