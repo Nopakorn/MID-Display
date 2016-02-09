@@ -241,7 +241,7 @@ public class EcoBar extends Fragment {
                             bottom_message.setVisibility(View.VISIBLE);
                             bottom_diviner.setVisibility(View.VISIBLE);
                         }
-                    }, 3000);
+                    }, 4000);
 
                     break;
                 case KEY_BATTERY_CHARGING:
