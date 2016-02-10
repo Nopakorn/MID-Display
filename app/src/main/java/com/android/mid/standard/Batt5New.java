@@ -70,6 +70,7 @@ public class Batt5New extends Fragment {
                     stateBattery = 0;
                     break;
             }
+            displayHandler.postDelayed(runnable, 1000);
 
         }
     };
