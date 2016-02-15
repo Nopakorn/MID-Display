@@ -115,19 +115,30 @@ public class EcoBar extends Fragment {
     private Runnable battable = new Runnable() {
         @Override
         public void run() {
+
+            //TODO: DECLARE ANIMATION STATUS BAR
+            Animation status_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_batt3);
+            Animation status_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out_batt3);
+            Animation status_blink = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
             switch (status) {
                 case KEY_BATTERY_CHARGING:
                     if (batteryStatus.getVisibility() == View.VISIBLE) {
+                        batteryStatus.setAnimation(status_out);
                         batteryStatus.setVisibility(View.INVISIBLE);
+                        bottom_message.setAnimation(status_in);
+                        bottom_diviner.setAnimation(status_in);
                         bottom_message.setVisibility(View.VISIBLE);
                         bottom_diviner.setVisibility(View.VISIBLE);
 
                     } else {
+                        batteryStatus.setAnimation(status_in);
                         batteryStatus.setVisibility(View.VISIBLE);
+                        bottom_message.setAnimation(status_out);
+                        bottom_diviner.setAnimation(status_out);
                         bottom_message.setVisibility(View.INVISIBLE);
                         bottom_diviner.setVisibility(View.INVISIBLE);
                     }
-
+                    //batteryStatus.setAnimation(status_blink);
                     break;
                 case KEY_BATTERY_LOW:
                     if (isRed) {
@@ -215,7 +226,9 @@ public class EcoBar extends Fragment {
         Bundle bundle = getArguments();
         status = bundle.getInt(KEY_BATTERY_STATUS);
 
-
+        //TODO: DECLARE ANIMATION STATUS BAR
+        final Animation status_fade_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        final Animation status_fade_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
 
         batteryStatus = (ImageView) view.findViewById(R.id.battery_status);
         if (status > 0) {
@@ -237,7 +250,9 @@ public class EcoBar extends Fragment {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            batteryStatus.setVisibility(View.INVISIBLE);
+                            batteryStatus.setAnimation(status_fade_out);
+                            bottom_message.setAnimation(status_fade_in);
+                            bottom_diviner.setAnimation(status_fade_in);
                             bottom_message.setVisibility(View.VISIBLE);
                             bottom_diviner.setVisibility(View.VISIBLE);
                         }
