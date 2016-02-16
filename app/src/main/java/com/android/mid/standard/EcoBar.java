@@ -1,11 +1,12 @@
 package com.android.mid.standard;
 
 import android.app.Fragment;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Typeface;
-import android.media.Image;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
-import com.android.mid.customizes.CurveCustom;
 import com.android.mid.customizes.CurveGauge;
 
 import java.util.Calendar;
@@ -142,10 +142,12 @@ public class EcoBar extends Fragment {
                     break;
                 case KEY_BATTERY_LOW:
                     if (isRed) {
+                        batteryStatus.setAnimation(status_out);
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
                     } else {
                         bottom_message.setVisibility(View.INVISIBLE);
                         bottom_diviner.setVisibility(View.INVISIBLE);
+                        batteryStatus.setAnimation(status_in);
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
                     }
 
@@ -226,9 +228,25 @@ public class EcoBar extends Fragment {
         Bundle bundle = getArguments();
         status = bundle.getInt(KEY_BATTERY_STATUS);
 
+
         //TODO: DECLARE ANIMATION STATUS BAR
         final Animation status_fade_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
         final Animation status_fade_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
+
+        //TODO: SOUND
+        final MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.sound);
+
+//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+//            int maxCount = 1;
+//            int count = 0;
+//            @Override
+//            public void onCompletion(MediaPlayer mediaPlayer) {
+//                if(count < maxCount) {
+//                    count++;
+//                    mediaPlayer.seekTo(0);
+//                    mediaPlayer.start();
+//                }
+//            }});
 
         batteryStatus = (ImageView) view.findViewById(R.id.battery_status);
         if (status > 0) {
@@ -250,6 +268,7 @@ public class EcoBar extends Fragment {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            mp.start();
                             batteryStatus.setAnimation(status_fade_out);
                             bottom_message.setAnimation(status_fade_in);
                             bottom_diviner.setAnimation(status_fade_in);
