@@ -90,8 +90,9 @@ public class MainActivity extends Activity {
         Thread socketServerThread = new Thread(new SocketServerThread());
         socketServerThread.start();
         //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
-        //screenChange(SCREEN_BATT1);
+          //screenChange(SCREEN_BATT4);
     }
+
     private void screenChange(String screen){
 
         switch (screen){
@@ -108,7 +109,6 @@ public class MainActivity extends Activity {
                 getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(4)).commit();
                 break;
             case SCREEN_BATT5:
-                //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
                 //TODO: NEW BATT5 DESIGN
                 getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5New.newInstance()).commit();
                 break;

@@ -46,6 +46,7 @@ public class EcoBar extends Fragment {
     private ImageView globe;
     private ImageView curveBar;
     private ImageView batteryStatus;
+    private ImageView batteryStatus_blank;
     private Random random;
     private Handler displayHandler;
     private Handler batteryHandler;
@@ -122,6 +123,8 @@ public class EcoBar extends Fragment {
             Animation status_blink = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
             switch (status) {
                 case KEY_BATTERY_CHARGING:
+                    batteryStatus_blank.setVisibility(View.INVISIBLE);
+
                     if (batteryStatus.getVisibility() == View.VISIBLE) {
                         batteryStatus.setAnimation(status_out);
                         batteryStatus.setVisibility(View.INVISIBLE);
@@ -140,15 +143,20 @@ public class EcoBar extends Fragment {
                     }
                     //batteryStatus.setAnimation(status_blink);
                     break;
+
                 case KEY_BATTERY_LOW:
+
+                    bottom_message.setVisibility(View.INVISIBLE);
+                    bottom_diviner.setVisibility(View.INVISIBLE);
+                    batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
+                    batteryStatus_blank.setVisibility(View.VISIBLE);
+
                     if (isRed) {
                         batteryStatus.setAnimation(status_out);
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
+                        batteryStatus_blank.setAnimation(status_in);
                     } else {
-                        bottom_message.setVisibility(View.INVISIBLE);
-                        bottom_diviner.setVisibility(View.INVISIBLE);
+                        batteryStatus_blank.setAnimation(status_out);
                         batteryStatus.setAnimation(status_in);
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
                     }
 
                     isRed = !isRed;
@@ -249,6 +257,8 @@ public class EcoBar extends Fragment {
 //            }});
 
         batteryStatus = (ImageView) view.findViewById(R.id.battery_status);
+        batteryStatus_blank = (ImageView) view.findViewById(R.id.battery_status_blank);
+
         if (status > 0) {
             switch (status) {
                 case KEY_BATTERY_OK:
