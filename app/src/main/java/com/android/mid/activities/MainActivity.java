@@ -2,8 +2,11 @@ package com.android.mid.activities;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -44,6 +47,7 @@ public class MainActivity extends Activity {
     public static final String SCREEN_WARNING = "WARNING";
     public static final String SCREEN_ECO_BAR = "ECO";
 
+    private String screen_name;
 
     private int screen = 0;
     private Fragment fragment;
@@ -74,6 +78,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("screen","oncreate called");
 
         setContentView(R.layout.main);
 
@@ -84,6 +89,7 @@ public class MainActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                         | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         info = (TextView) findViewById(R.id.textInfo);
 
@@ -93,8 +99,56 @@ public class MainActivity extends Activity {
           //screenChange(SCREEN_BATT4);
     }
 
-    private void screenChange(String screen){
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //screenChange(screen_name);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        Log.d("screen", "onresume called");
+        if(screen_name != null){
+            screenChange(screen_name);
+            Log.d("screen", "current screen "+ screen_name);
+        }
+        // /screenChange(screen_name);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("currentScreen", screen_name);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        screen_name = savedInstanceState.getString("currentScreen");
+    }
+
+    private void screenChange(String screen){
+        screen_name = screen;
+
+        Log.d("screen","in screen change: "+ screen_name);
         switch (screen){
             case SCREEN_BATT1:
                 getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(1)).commit();
@@ -103,7 +157,7 @@ public class MainActivity extends Activity {
                 getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(2)).commit();
                 break;
             case SCREEN_BATT3:
-                getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(3)).commit();
+                getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(0)).commit();
                 break;
             case SCREEN_BATT4:
                 getFragmentManager().beginTransaction().replace(android.R.id.content, EcoBar.newInstance(4)).commit();

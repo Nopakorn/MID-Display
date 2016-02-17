@@ -120,7 +120,7 @@ public class EcoBar extends Fragment {
             //TODO: DECLARE ANIMATION STATUS BAR
             Animation status_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_batt3);
             Animation status_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out_batt3);
-            Animation status_blink = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
+
             switch (status) {
                 case KEY_BATTERY_CHARGING:
                     batteryStatus_blank.setVisibility(View.INVISIBLE);
@@ -141,7 +141,7 @@ public class EcoBar extends Fragment {
                         bottom_message.setVisibility(View.INVISIBLE);
                         bottom_diviner.setVisibility(View.INVISIBLE);
                     }
-                    //batteryStatus.setAnimation(status_blink);
+
                     break;
 
                 case KEY_BATTERY_LOW:
@@ -149,14 +149,11 @@ public class EcoBar extends Fragment {
                     bottom_message.setVisibility(View.INVISIBLE);
                     bottom_diviner.setVisibility(View.INVISIBLE);
                     batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
-                    batteryStatus_blank.setVisibility(View.VISIBLE);
 
                     if (isRed) {
-                        batteryStatus.setAnimation(status_out);
-                        batteryStatus_blank.setAnimation(status_in);
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
                     } else {
-                        batteryStatus_blank.setAnimation(status_out);
-                        batteryStatus.setAnimation(status_in);
+                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
                     }
 
                     isRed = !isRed;
@@ -238,23 +235,11 @@ public class EcoBar extends Fragment {
 
 
         //TODO: DECLARE ANIMATION STATUS BAR
-        final Animation status_fade_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
+        final Animation status_fade_out = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out_batt3);
         final Animation status_fade_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
 
         //TODO: SOUND
         final MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.sound);
-
-//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-//            int maxCount = 1;
-//            int count = 0;
-//            @Override
-//            public void onCompletion(MediaPlayer mediaPlayer) {
-//                if(count < maxCount) {
-//                    count++;
-//                    mediaPlayer.seekTo(0);
-//                    mediaPlayer.start();
-//                }
-//            }});
 
         batteryStatus = (ImageView) view.findViewById(R.id.battery_status);
         batteryStatus_blank = (ImageView) view.findViewById(R.id.battery_status_blank);
@@ -267,6 +252,19 @@ public class EcoBar extends Fragment {
                         bottom_message.setVisibility(View.INVISIBLE);
                         bottom_diviner.setVisibility(View.INVISIBLE);
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.ok_bar, getActivity().getTheme()));
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mp.start();
+                                batteryStatus.setAnimation(status_fade_out);
+                                bottom_message.setAnimation(status_fade_in);
+                                bottom_diviner.setAnimation(status_fade_in);
+                                bottom_message.setVisibility(View.VISIBLE);
+                                bottom_diviner.setVisibility(View.VISIBLE);
+                            }
+                        }, 11000);
+
                     } else {
                         bottom_message.setVisibility(View.INVISIBLE);
                         bottom_diviner.setVisibility(View.INVISIBLE);
@@ -275,17 +273,7 @@ public class EcoBar extends Fragment {
 
                     batteryStatus.setVisibility(View.VISIBLE);
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mp.start();
-                            batteryStatus.setAnimation(status_fade_out);
-                            bottom_message.setAnimation(status_fade_in);
-                            bottom_diviner.setAnimation(status_fade_in);
-                            bottom_message.setVisibility(View.VISIBLE);
-                            bottom_diviner.setVisibility(View.VISIBLE);
-                        }
-                    }, 4000);
+
 
                     break;
                 case KEY_BATTERY_CHARGING:
