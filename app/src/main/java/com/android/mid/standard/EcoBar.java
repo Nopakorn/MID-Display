@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,8 @@ public class EcoBar extends Fragment {
     private int status;
     private int curve_status = 0;
     private boolean isRed;
+    private int checker = 0;
+    private boolean flag = false;
 
     private ImageView bottom_diviner;
     private TextView dotBlink;
@@ -150,17 +153,31 @@ public class EcoBar extends Fragment {
                     bottom_diviner.setVisibility(View.INVISIBLE);
                     batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
 
-                    if (isRed) {
-                        batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
-                    } else {
+                    if(checker == 20){
+                        checker = 0;
+                        isRed = true;
+                        break;
+
+                    }
+                    if(checker > 10){
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
+                        checker++;
+                        break;
+
+                    }
+                    if(checker <= 10){
+                        if (isRed) {
+                            batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
+                        } else {
+                            batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
+                        }
+                        checker++;
+                        isRed = !isRed;
+                        break;
                     }
 
-                    isRed = !isRed;
-
-                    break;
             }
-
+            Log.d("checker",""+checker);
             batteryHandler.postDelayed(battable, 1000);
         }
     };
