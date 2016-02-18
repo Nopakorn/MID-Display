@@ -52,7 +52,7 @@ public class Batt5New extends Fragment {
 
             stateBattery++;
             switch (stateBattery){
-                
+
                 case 1:
                     batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_0, getActivity().getTheme()));
                     break;
