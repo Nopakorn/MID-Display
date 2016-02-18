@@ -159,13 +159,20 @@ public class EcoBar extends Fragment {
                         break;
 
                     }
+
                     if(checker > 10){
                         batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
                         checker++;
                         break;
 
                     }
+
                     if(checker <= 10){
+
+                        if(checker == 0){
+                            batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar, getActivity().getTheme()));
+                        }
+
                         if (isRed) {
                             batteryStatus.setImageDrawable(getResources().getDrawable(R.mipmap.low_bar_blank, getActivity().getTheme()));
                         } else {
