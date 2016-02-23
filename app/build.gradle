@@ -16,7 +16,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     productFlavors {
+    }
+
+    android {
+
+        lintOptions {
+            abortOnError false
+        }
     }
 }
 

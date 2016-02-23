@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,11 @@ public class Warning extends Fragment {
     private TextView dotBlink;
     private Animation animation;
     private TextView odometer;
+    private TextView odoText;
     private int km = 2557;
+    private int odo = 2557;
     private Handler displayHandler;
+
 
     private TextView celText;
     private TextView tempText;
@@ -45,14 +49,21 @@ public class Warning extends Fragment {
         @Override
         public void run() {
             km = km + 1;
+            String odo_t = "ODO";
 
-            if (km != Integer.parseInt(odometer.getText().toString())) {
-                odometer.setText(String.format("%06d", km));
+            if (km != Integer.parseInt(tempText.getText().toString())) {
+                tempText.setText(String.format("%06d", km));
+            }
+
+            if (km != odo) {
+                odoText.setText(String.format(odo_t+"     "+km));
+                odo = km;
             }
 
             displayHandler.postDelayed(runnable, 20000);
         }
     };
+
 
     public static Warning newInstance() {
         return new Warning();
@@ -80,16 +91,10 @@ public class Warning extends Fragment {
         Calendar calendar = Calendar.getInstance();
         int hours = calendar.get(Calendar.HOUR);
         dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
-//        if (hours >= 10) {
-//            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
-//        } else {
-//            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
-//        }
         dotBlink.setVisibility(View.VISIBLE);
         dotBlink.startAnimation(animation);
 
         odometer = (TextView) view.findViewById(R.id.odometer);
-
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
         dText = (TextView) view.findViewById(R.id.center_text);
@@ -115,6 +120,7 @@ public class Warning extends Fragment {
 
         displayHandler = new Handler();
         displayHandler.post(runnable);
+
 
         //TODO: ANIMATION HEADER AND DISPLAY BODY
         relativeLayout_display.setVisibility(View.INVISIBLE);

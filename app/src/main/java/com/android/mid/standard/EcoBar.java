@@ -51,6 +51,7 @@ public class EcoBar extends Fragment {
     private Random random;
     private Handler displayHandler;
     private Handler batteryHandler;
+    private Handler odoHandler;
     private int status;
     private int curve_status = 0;
     private boolean isRed;
@@ -68,6 +69,19 @@ public class EcoBar extends Fragment {
     private TextView fText;
     private TextView clockText;
     private TextView bottom_message;
+    private TextView odoText;
+    private int km = 2557;
+
+    private Runnable runnable_odo = new Runnable() {
+        @Override
+        public void run() {
+            km = km + 1;
+            String odo_t = "ODO";
+            tempText.setText(String.format(odo_t+"     "+km));
+
+            displayHandler.postDelayed(runnable_odo, 20000);
+        }
+    };
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -339,6 +353,8 @@ public class EcoBar extends Fragment {
         title.setTypeface(custom_font);
         displayHandler = new Handler();
         displayHandler.post(runnable);
+        odoHandler = new Handler();
+        odoHandler.post(runnable_odo);
     }
 
     public void callDisplay() {
@@ -355,6 +371,7 @@ public class EcoBar extends Fragment {
         super.onStop();
 
         displayHandler.removeCallbacks(runnable);
+        odoHandler.removeCallbacks(runnable_odo);
         if (batteryHandler != null) {
             batteryHandler.removeCallbacks(battable);
         }

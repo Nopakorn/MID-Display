@@ -36,7 +36,7 @@ public class GifView extends View {
     }
 
     private void initialize() {
-        movie = Movie.decodeStream(getContext().getResources().openRawResource(R.mipmap.globe));
+        //movie = Movie.decodeStream(getContext().getResources().openRawResource(R.mipmap.globe));
     }
 
     @Override

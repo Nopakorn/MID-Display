@@ -187,13 +187,12 @@
             android:id="@+id/odometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="28dp"
+            android:layout_marginLeft="20dp"
             android:text="002558"
             android:textColor="#E0E0E0"
             android:textSize="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/icon_warning"
-            android:layout_marginBottom="44dp" />
+            android:layout_alignBottom="@+id/trip_a"
+            android:layout_toEndOf="@+id/trip_a" />
 
         <TextView
             android:id="@+id/unit"

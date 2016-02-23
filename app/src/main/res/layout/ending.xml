@@ -8,17 +8,20 @@
     <!--w:385dp h:565dp-->
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/ring_empty_00"
-        android:visibility="invisible" />
+        android:layout_width="277dp"
+        android:layout_height="279dp"
+        android:src="@mipmap/ring_empty_00n"
+        android:scaleType="fitXY"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_marginTop="203dp" />
 
     <ImageView
         android:id="@+id/image_icon"
-        android:layout_width="190dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="280dp"
         android:src="@mipmap/ic_denso"
         android:visibility="invisible" />
 
@@ -27,11 +30,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="25dp"
         android:text="THANK YOU"
         android:textColor="#FFFFFF"
-        android:textSize="46sp"
-
+        android:textSize="38sp"
         android:visibility="invisible"
         android:layout_below="@+id/image_icon"
         android:textIsSelectable="false" />

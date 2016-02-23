@@ -49,6 +49,19 @@ public class Fuel extends Fragment {
     private GaugeItem gaugeItem2;
     private Random random;
     private Handler displayHandler;
+    private Handler odoHandler;
+
+    private int km = 2557;
+    private Runnable runnable_odo = new Runnable() {
+        @Override
+        public void run() {
+            km = km + 1;
+            String odo_t = "ODO";
+            tempText.setText(String.format(odo_t+"     "+km));
+
+            displayHandler.postDelayed(runnable_odo, 20000);
+        }
+    };
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -136,10 +149,8 @@ public class Fuel extends Fragment {
 
         linearLayout = (LinearLayout) view.findViewById(R.id.display_linear);
         linearLayout.addView(gaugeView1);
-        //linearLayout.addView(relativeLayout_topspace);
         linearLayout.addView(gaugeView2);
-//        relativeLayout_display.addView(linearLayout);
-       // linearLayout.addView(resetView);
+
         //TODO: SET FONT FACE
         celText = (TextView) view.findViewById(R.id.cel_text);
         dText = (TextView) view.findViewById(R.id.center_text);
@@ -168,6 +179,9 @@ public class Fuel extends Fragment {
         Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
         relativeLayout_head.setAnimation(animation_in);
         callDisplay();
+
+        odoHandler = new Handler();
+        odoHandler.post(runnable_odo);
     }
 
     public void callDisplay() {
@@ -183,6 +197,7 @@ public class Fuel extends Fragment {
         super.onStop();
 
         displayHandler.removeCallbacks(runnable);
+        odoHandler.removeCallbacks(runnable_odo);
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
         relativeLayout.startAnimation(animation);
     }

@@ -36,6 +36,7 @@ public class Batt5New extends Fragment {
     private TextView dotBlink;
     private Animation animation;
     private Handler displayHandler;
+    private Handler odoHandler;
     private int stateBattery = 0;
 
     private TextView celText;
@@ -46,6 +47,20 @@ public class Batt5New extends Fragment {
     private TextView clockText;
 
     private boolean flag = false;
+    private int km = 2557;
+
+    private Runnable runnable_odo = new Runnable() {
+        @Override
+        public void run() {
+            km = km + 1;
+            String odo_t = "ODO";
+            tempText.setText(String.format(odo_t+"     "+km));
+
+            displayHandler.postDelayed(runnable_odo, 20000);
+        }
+    };
+
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -146,8 +161,8 @@ public class Batt5New extends Fragment {
         relativeLayout_head.setAnimation(animation_in);
         callDisplay();
 
-
-
+        odoHandler = new Handler();
+        odoHandler.post(runnable_odo);
     }
 
     public void callDisplay() {
@@ -177,6 +192,7 @@ public class Batt5New extends Fragment {
     public void onStop() {
         super.onStop();
         displayHandler.removeCallbacks(runnable);
+        odoHandler.removeCallbacks(runnable_odo);
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out);
         relativeLayout.startAnimation(animation);
     }
