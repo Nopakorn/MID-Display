@@ -109,11 +109,12 @@ public class Batt5New extends Fragment {
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        if (hours >= 10) {
-            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
-        } else {
-            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
-        }
+        dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
+//        if (hours >= 10) {
+//            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
+//        } else {
+//            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
+//        }
         dotBlink.setVisibility(View.VISIBLE);
         dotBlink.startAnimation(animation);
 

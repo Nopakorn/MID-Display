@@ -19,15 +19,16 @@
             android:textSize="28.0sp"
             android:layout_below="@+id/center_text"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="10dp" />
 
         <ImageView
             android:id="@+id/top_diviner"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/temperature"
+            android:layout_below="@+id/cel_text"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/top_diviner" />
+            android:src="@mipmap/top_diviner"
+            android:layout_marginTop="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,9 +38,11 @@
             android:id="@+id/cel_text"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:textSize="34dp"
+            android:textSize="30dp"
             android:textColor="#ffffff"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,9 +51,10 @@
             android:text="D"
             android:id="@+id/center_text"
             android:textColor="#ffffff"
-            android:textSize="34dp"
+            android:textSize="30dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,8 +65,8 @@
             android:textColor="#ffffff"
             android:textSize="38dp"
             android:layout_below="@+id/top_diviner"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="7dp" />
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,29 +77,28 @@
             android:textColor="#ffffff"
             android:textSize="38dp"
             android:layout_below="@+id/top_diviner"
-            android:layout_marginTop="5dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="7dp" />
+            android:layout_marginRight="15dp" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:id="@+id/fuel_logo"
             android:src="@mipmap/fuel_logo"
             android:layout_alignBottom="@+id/f_text"
             android:layout_alignStart="@+id/center_text"
             android:contentDescription="fuel_logo"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="10dp" />
 
         <ImageView
-            android:layout_width="360dp"
+            android:layout_width="300dp"
             android:layout_height="60dp"
             android:id="@+id/fuel_line"
             android:src="@mipmap/fuel_line"
             android:contentDescription="topbar"
             android:layout_below="@+id/top_diviner"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="20dp" />
 
         <TextClock
             android:id="@+id/text_clock"
@@ -104,18 +107,20 @@
             android:textColor="#E0E0E0"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/e_text"
-            android:textSize="34dp"
+            android:textSize="30dp"
             android:layout_toStartOf="@+id/center_text"
             android:layout_toRightOf="@+id/center_text"
             android:layout_alignBottom="@+id/center_text"
-            android:format24Hour="HH:mm"/>
+            android:format24Hour="HH:mm"
+            android:textIsSelectable="true"
+            android:layout_marginTop="8dp" />
 
 
         <TextView
             android:id="@+id/dot_blink2"
             android:layout_width="7dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="42dp"
+            android:layout_marginLeft="45dp"
             android:layout_marginTop="10dp"
             android:background="#000000"
             android:visibility="invisible" />
@@ -130,6 +135,7 @@
             android:visibility="invisible" />
 
     </RelativeLayout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/top_space"
         android:layout_width="match_parent"
@@ -151,7 +157,8 @@
         android:id="@+id/display_bottom"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="28dp">
 
         <TextView
             android:id="@+id/bottom_message"

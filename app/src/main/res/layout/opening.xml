@@ -8,15 +8,15 @@
     <!--w:385dp h:565dp-->
     <ProgressBar
         android:id="@+id/blooming"
-        android:layout_width="360dp"
-        android:layout_height="322dp"
+        android:layout_width="277dp"
+        android:layout_height="279dp"
         android:gravity = "center_vertical|center_horizontal"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="false"
         android:indeterminateDrawable="@anim/blooming"
+        android:scaleType="fitXY"
         android:visibility="invisible"
-         />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="203dp" />
 
     <!--ImageView
         android:id="@+id/image_view"
@@ -35,7 +35,8 @@
         android:textColor="#FFFFFF"
         android:textSize="48.0sp"
         android:visibility="invisible"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="328dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="70dp" />
 
 </RelativeLayout>

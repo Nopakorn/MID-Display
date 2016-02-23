@@ -38,6 +38,7 @@ public class Fuel extends Fragment {
     private RelativeLayout relativeLayout_head;
     private RelativeLayout relativeLayout_display;
     private RelativeLayout relativeLayout_bottom;
+    private RelativeLayout relativeLayout_topspace;
 
     private TextView dotBlink;
     private Animation animation;
@@ -100,14 +101,16 @@ public class Fuel extends Fragment {
         relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
         relativeLayout_bottom = (RelativeLayout) view.findViewById(R.id.display_bottom);
 
+
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        if (hours >= 10) {
-            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
-        } else {
-            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
-        }
+        dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
+//        if (hours >= 10) {
+//            dotBlink = (TextView) view.findViewById(R.id.dot_blink2);
+//        } else {
+//            dotBlink = (TextView) view.findViewById(R.id.dot_blink1);
+//        }
         dotBlink.setVisibility(View.VISIBLE);
         dotBlink.startAnimation(animation);
 
@@ -123,7 +126,7 @@ public class Fuel extends Fragment {
 
         View gaugeView2 = layoutInflater.inflate(R.layout.item_gauge, null);
         gaugeItem2 = new GaugeItem(gaugeView2);
-        gaugeItem2.setTitle("Av.Fuel Consumption");
+        gaugeItem2.setTitle("Average Fuel Consumption");
         gaugeItem2.setUnit("km/L");
         for (int i = 1; i <= 4; i++) {
             gaugeItem2.setInterval(i, ((i - 1) * 20));
@@ -133,6 +136,7 @@ public class Fuel extends Fragment {
 
         linearLayout = (LinearLayout) view.findViewById(R.id.display_linear);
         linearLayout.addView(gaugeView1);
+        //linearLayout.addView(relativeLayout_topspace);
         linearLayout.addView(gaugeView2);
 //        relativeLayout_display.addView(linearLayout);
        // linearLayout.addView(resetView);

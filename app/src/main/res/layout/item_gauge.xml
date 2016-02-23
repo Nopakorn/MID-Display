@@ -13,19 +13,18 @@
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/interval1"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:text="{UNIT}"
+        android:text="km/L"
         android:textColor="#E0E0E0"
         android:textSize="24.0sp"
         android:layout_below="@+id/title"
-        android:layout_alignEnd="@+id/gauge" />
+        android:layout_marginLeft="260dp" />
 
     <TextView
         android:id="@+id/interval1"
@@ -71,12 +70,20 @@
 
     <com.android.mid.customizes.Gauge
         android:id="@+id/gauge"
-        android:layout_width="300dp"
+        android:layout_width="240dp"
         android:layout_height="47dp"
         android:layout_marginLeft="30dp"
         android:scaleType="fitXY"
         android:progress="0"
-        android:layout_below="@+id/unit"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/top_space"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#000000"
+        android:layout_marginTop="130dp" />
 
 </RelativeLayout>
