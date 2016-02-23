@@ -43,12 +43,13 @@
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="302dp"
-        android:layout_height="350dp"
-        android:src="@mipmap/egobh_rs"
+        android:layout_width="252dp"
+        android:layout_height="250dp"
+        android:src="@mipmap/shade_bg"
         android:scaleType="fitXY"
         android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 
     <ImageView
         android:id="@+id/globe"

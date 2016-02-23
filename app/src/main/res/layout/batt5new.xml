@@ -167,7 +167,7 @@
             android:layout_width="277dp"
             android:layout_height="279dp"
             android:id="@+id/battery_level"
-            android:src="@mipmap/batt_low"
+            android:src="@mipmap/low_1"
             android:scaleType="centerCrop"
             android:layout_alignParentStart="false"
             android:layout_alignParentBottom="false"
@@ -180,9 +180,9 @@
             android:text="BATTERY STATUS"
             android:id="@+id/batteryStatus"
             android:textColor="#ffffff"
-            android:textSize="28dp"
+            android:textSize="32dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="25dp" />
 
 
     </RelativeLayout>

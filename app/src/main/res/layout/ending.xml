@@ -9,12 +9,12 @@
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="277dp"
-        android:layout_height="279dp"
-        android:src="@mipmap/ring_empty_00n"
+        android:layout_height="392dp"
+        android:src="@mipmap/er_end"
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
-        android:visibility="invisible"
-        android:layout_marginTop="203dp" />
+        android:visibility="visible"
+        android:layout_marginTop="145dp" />
 
     <ImageView
         android:id="@+id/image_icon"

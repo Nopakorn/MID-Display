@@ -69,26 +69,26 @@ public class Batt5New extends Fragment {
             switch (stateBattery){
 
                 case 1:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_0, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.charging_2, getActivity().getTheme()));
                     break;
                 case 2:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.charging_3, getActivity().getTheme()));
                     break;
                 case 3:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_2, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.charging_4, getActivity().getTheme()));
                     break;
                 case 4:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_charging_3, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.charging_5, getActivity().getTheme()));
                     break;
                 case 5:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok_0, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.ok_6, getActivity().getTheme()));
                     break;
                 case 6:
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_ok, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.ok_7, getActivity().getTheme()));
                     break;
                 case 7:
                     //TODO: START FROM LOW BATTERY DISPLAY
-                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.batt_low, getActivity().getTheme()));
+                    batteryLevel.setImageDrawable(getResources().getDrawable(R.mipmap.low_1, getActivity().getTheme()));
                     stateBattery = 0;
                     break;
             }

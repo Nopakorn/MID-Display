@@ -2,27 +2,27 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@mipmap/bar_s1"
+        android:drawable="@mipmap/er_lv1"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/bar_s2"
+        android:drawable="@mipmap/er_lv2"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/bar_s3"
+        android:drawable="@mipmap/er_lv3"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/bar_s4"
+        android:drawable="@mipmap/er_lv4"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/bar_s5"
+        android:drawable="@mipmap/er_lv5"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/bar_s6"
+        android:drawable="@mipmap/er_lv6"
         android:duration="375"
         />
 

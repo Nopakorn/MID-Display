@@ -146,11 +146,19 @@
         android:layout_below="@+id/relativeLayout_head"
         android:layout_alignParentStart="true" />
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="424dp"
+        android:id="@+id/energy_bg"
+        android:src="@mipmap/energy_ring_fuel"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:layout_marginTop="120dp" />
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/display"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="#020202"
         android:orientation="vertical"
         android:layout_below="@+id/top_space"
         android:layout_alignParentStart="true">
@@ -159,7 +167,6 @@
             android:id="@+id/display_linear"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:background="#020202"
             android:orientation="vertical"
             android:layout_alignParentStart="true"/>
 

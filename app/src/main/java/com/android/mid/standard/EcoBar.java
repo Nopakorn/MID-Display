@@ -98,27 +98,27 @@ public class EcoBar extends Fragment {
             curve_status = value;
             switch (curve_status) {
                 case 1:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s1, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv1, getActivity().getTheme()));
                     break;
 
                 case 2:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s2, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv2, getActivity().getTheme()));
                     break;
 
                 case 3:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s3, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv3, getActivity().getTheme()));
                     break;
 
                 case 4:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s4, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv4, getActivity().getTheme()));
                     break;
 
                 case 5:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s5, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv5, getActivity().getTheme()));
                     break;
 
                 case 6:
-                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.bar_s6, getActivity().getTheme()));
+                    curveBar.setImageDrawable(getResources().getDrawable(R.mipmap.er_lv6, getActivity().getTheme()));
                     break;
 
                 case 7:
