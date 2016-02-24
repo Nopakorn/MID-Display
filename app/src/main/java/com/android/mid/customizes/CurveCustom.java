@@ -43,7 +43,7 @@ public class CurveCustom extends View {
         mPivotY = 0;
 
         //Adjust the image size to support different screen sizes
-        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.curve_full);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.er_empty);
         int imageWidth = (int) (getScreenGridUnit() * 30);
         int imageHeight = (int) (getScreenGridUnit() * 30);
         mBitmap = Bitmap.createScaledBitmap(bitmap, imageWidth, imageHeight, false);

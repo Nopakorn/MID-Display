@@ -14,4 +14,5 @@
     <item android:id="@android:id/progress">
         <clip android:drawable="@mipmap/full_fuel_nogrid" />
     </item>
+
 </layer-list>

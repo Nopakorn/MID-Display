@@ -2,7 +2,6 @@ package com.android.mid.standard;
 
 import android.app.Fragment;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.mid.R;
-import com.android.mid.customizes.Batt5Progress;
 
 import java.util.Calendar;
 

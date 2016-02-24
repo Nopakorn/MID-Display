@@ -51,12 +51,12 @@ public class Warning extends Fragment {
             km = km + 1;
             String odo_t = "ODO";
 
-            if (km != Integer.parseInt(tempText.getText().toString())) {
-                tempText.setText(String.format("%06d", km));
+            if (km != Integer.parseInt(odometer.getText().toString())) {
+                odometer.setText(String.format("%06d", km));
             }
 
             if (km != odo) {
-                odoText.setText(String.format(odo_t+"     "+km));
+                tempText.setText(String.format(odo_t+"     "+km));
                 odo = km;
             }
 

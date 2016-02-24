@@ -2,17 +2,13 @@ package com.android.mid.activities;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.mid.R;
-import com.android.mid.standard.Batt5;
 import com.android.mid.standard.Batt5New;
 import com.android.mid.standard.EcoBar;
 import com.android.mid.standard.Ending;
@@ -78,8 +74,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("screen","oncreate called");
-
         setContentView(R.layout.main);
 
         getWindow().getDecorView().setSystemUiVisibility(
@@ -110,7 +104,7 @@ public class MainActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        //screenChange(screen_name);
+
     }
 
     @Override
@@ -124,12 +118,10 @@ public class MainActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        Log.d("screen", "onresume called");
+
         if(screen_name != null){
             screenChange(screen_name);
-            Log.d("screen", "current screen "+ screen_name);
         }
-        // /screenChange(screen_name);
     }
 
     @Override

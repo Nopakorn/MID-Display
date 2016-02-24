@@ -23,7 +23,7 @@
         android:textColor="#E0E0E0"
         android:textSize="24.0sp"
         android:layout_below="@+id/title"
-        android:layout_marginLeft="260dp" />
+        android:layout_marginLeft="270dp" />
 
     <TextView
         android:id="@+id/interval1"
@@ -33,7 +33,7 @@
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/title" />
 
     <TextView
@@ -70,7 +70,7 @@
         android:textSize="28.0sp"
         android:layout_toRightOf="@+id/interval3"
         android:layout_below="@+id/title"
-        android:layout_marginTop="49dp" />
+        android:layout_marginTop="47dp" />
 
     <com.android.mid.customizes.Gauge
         android:id="@+id/gauge"

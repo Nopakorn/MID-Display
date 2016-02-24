@@ -24,7 +24,7 @@
         <!--android:layout_marginTop="-15dp" />-->
     <ImageView
         android:id="@+id/curve_bar"
-        android:src="@mipmap/curve_empty"
+        android:src="@mipmap/er_empty"
         android:layout_width="252dp"
         android:layout_height="250dp"
         android:progress="0"
