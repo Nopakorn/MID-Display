@@ -16,7 +16,8 @@
         android:scaleType="fitXY"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="203dp" />
+        android:layout_marginTop="203dp"
+        android:contextClickable="false" />
 
     <!--ImageView
         android:id="@+id/image_view"
@@ -33,10 +34,9 @@
         android:layout_height="wrap_content"
         android:text="WELCOME"
         android:textColor="#FFFFFF"
-        android:textSize="48.0sp"
+        android:textSize="46.0sp"
         android:visibility="invisible"
-        android:layout_marginTop="328dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="70dp" />
+        android:layout_marginTop="324dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

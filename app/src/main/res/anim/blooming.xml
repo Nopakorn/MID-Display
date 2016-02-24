@@ -2,35 +2,36 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@mipmap/ring_progress_00_01n"
+        android:drawable="@mipmap/ring_progress_01_01"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_02n"
+        android:drawable="@mipmap/ring_progress_01_02"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_03n"
+        android:drawable="@mipmap/ring_progress_01_03"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_04n"
+        android:drawable="@mipmap/ring_progress_01_04"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_05n"
+        android:drawable="@mipmap/ring_progress_01_05"
         android:duration="375"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_06n"
-        android:duration="375"
+        android:drawable="@mipmap/ring_progress_01_06"
+        android:duration="450"
         />
     <item
-        android:drawable="@mipmap/ring_progress_00_07n"
+        android:drawable="@mipmap/ring_progress_01_07"
         android:duration="375"
         />
+
     <item
-        android:drawable="@mipmap/ring_full_00"
+        android:drawable="@mipmap/ring_full_01"
         android:duration="1000"
 
         />

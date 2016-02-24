@@ -13,8 +13,7 @@
         android:toXScale="1"
         android:toYScale="1"
         />
-
-
+    
     <rotate
 
         android:duration="3000"
@@ -23,7 +22,7 @@
         android:pivotX="50%"
         android:pivotY="50%"
         android:repeatCount="0"
-         />
+        />
 
 
 </set>
