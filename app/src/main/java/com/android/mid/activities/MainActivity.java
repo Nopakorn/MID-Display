@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 
 //        Thread socketServerThread = new Thread(new SocketServerThread());
 //        socketServerThread.start();
-        screenChange(SCREEN_ECO_BAR);
+        screenChange(SCREEN_FUEL);
     }
 
 

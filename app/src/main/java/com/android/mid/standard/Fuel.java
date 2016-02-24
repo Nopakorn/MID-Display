@@ -38,7 +38,7 @@ public class Fuel extends Fragment {
     private RelativeLayout relativeLayout_head;
     private RelativeLayout relativeLayout_display;
     private RelativeLayout relativeLayout_bottom;
-    private RelativeLayout relativeLayout_topspace;
+    private ImageView bg_ring;
 
     private TextView dotBlink;
     private Animation animation;
@@ -114,6 +114,7 @@ public class Fuel extends Fragment {
         relativeLayout_display = (RelativeLayout) view.findViewById(R.id.display);
         relativeLayout_bottom = (RelativeLayout) view.findViewById(R.id.display_bottom);
 
+        bg_ring = (ImageView) view.findViewById(R.id.energy_bg);
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.blink);
         Calendar calendar = Calendar.getInstance();
@@ -178,6 +179,7 @@ public class Fuel extends Fragment {
         relativeLayout_bottom.setVisibility(View.INVISIBLE);
         Animation animation_in = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_head);
         relativeLayout_head.setAnimation(animation_in);
+        bg_ring.setAnimation(animation_in);
         callDisplay();
 
         odoHandler = new Handler();

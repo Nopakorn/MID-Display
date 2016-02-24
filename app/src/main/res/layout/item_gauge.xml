@@ -29,43 +29,48 @@
         android:id="@+id/interval1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:text="0"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_below="@+id/gauge"
-        android:layout_alignStart="@+id/gauge" />
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/title" />
 
     <TextView
         android:id="@+id/interval2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
         android:text="20"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_alignTop="@+id/interval1" />
+        android:layout_toRightOf="@+id/interval1"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="59dp"
+        android:layout_marginLeft="61dp" />
 
     <TextView
         android:id="@+id/interval3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
+        android:layout_marginLeft="56dp"
         android:text="40"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_below="@+id/gauge" />
+        android:layout_toRightOf="@+id/interval2"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="59dp" />
 
     <TextView
         android:id="@+id/interval4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="65dp"
+        android:layout_marginLeft="58dp"
         android:text="60"
         android:textColor="#E0E0E0"
         android:textSize="28.0sp"
-        android:layout_below="@+id/gauge"
-        android:layout_alignEnd="@+id/gauge" />
+        android:layout_toRightOf="@+id/interval3"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="49dp" />
 
     <com.android.mid.customizes.Gauge
         android:id="@+id/gauge"
@@ -76,7 +81,7 @@
         android:progress="0"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="12dp" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/top_space"

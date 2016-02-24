@@ -9,9 +9,9 @@
     <!--</item>-->
     <item
         android:id="@android:id/background"
-        android:drawable="@mipmap/g26_empty_d" />
+        android:drawable="@mipmap/empty_fuel" />
 
     <item android:id="@android:id/progress">
-        <clip android:drawable="@mipmap/g26_full_e" />
+        <clip android:drawable="@mipmap/full_fuel_nogrid" />
     </item>
 </layer-list>
