@@ -95,8 +95,7 @@ public class MainActivity extends Activity {
 
 //        Thread socketServerThread = new Thread(new SocketServerThread());
 //        socketServerThread.start();
-        //getFragmentManager().beginTransaction().replace(android.R.id.content, Batt5.newInstance()).commit();
-          screenChange(SCREEN_ENDING);
+        screenChange(SCREEN_ECO_BAR);
     }
 
 

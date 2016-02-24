@@ -66,7 +66,7 @@
             android:textSize="38dp"
             android:layout_below="@+id/top_diviner"
             android:layout_marginTop="0dp"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="14dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,11 +91,12 @@
             android:layout_marginBottom="10dp" />
 
         <ImageView
-            android:layout_width="300dp"
+            android:layout_width="340dp"
             android:layout_height="60dp"
             android:id="@+id/fuel_line"
             android:src="@mipmap/fuel_line"
             android:contentDescription="topbar"
+            android:scaleType="fitXY"
             android:layout_below="@+id/top_diviner"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp" />
@@ -118,12 +119,13 @@
 
         <TextView
             android:id="@+id/dot_blink2"
-            android:layout_width="7dp"
+            android:layout_width="5dp"
             android:layout_height="25dp"
             android:layout_marginLeft="45dp"
             android:layout_marginTop="10dp"
             android:background="#000000"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            />
 
         <TextView
             android:id="@+id/dot_blink1"
