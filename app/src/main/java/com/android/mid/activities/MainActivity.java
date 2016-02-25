@@ -87,9 +87,9 @@ public class MainActivity extends Activity {
 
         info = (TextView) findViewById(R.id.textInfo);
 
-//        Thread socketServerThread = new Thread(new SocketServerThread());
-//        socketServerThread.start();
-        screenChange(SCREEN_OPENING);
+        Thread socketServerThread = new Thread(new SocketServerThread());
+        socketServerThread.start();
+        //screenChange(SCREEN_OPENING);
     }
 
 
