@@ -10,7 +10,7 @@
         android:layout_width="326dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Infomation"
+        android:text="information"
         android:id="@+id/textInfo"
         android:layout_gravity="center_horizontal"
         android:textColor="#ffffff"
